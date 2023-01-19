@@ -22,7 +22,7 @@ import {
     ChevronRightIcon,
 } from '@chakra-ui/icons';
 
-export default function WithSubnavigation() {
+export default function DefaultNavbar() {
     const { isOpen, onToggle } = useDisclosure();
 
     return (
@@ -251,15 +251,55 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
     {
-        label: 'Inspiration',
+        label: 'Products',
         children: [
             {
-                label: 'Explore Design Work',
+                label: 'Blush',
                 subLabel: 'Trending Design to inspire you',
                 href: '#',
             },
             {
-                label: 'New & Noteworthy',
+                label: 'Bronzer',
+                subLabel: 'Up-and-coming Designers',
+                href: '#',
+            },
+            {
+                label: 'Eyebrow',
+                subLabel: 'Up-and-coming Designers',
+                href: '#',
+            },
+            {
+                label: 'EyeLiner',
+                subLabel: 'Up-and-coming Designers',
+                href: '#',
+            },
+            {
+                label: 'Eyeshadow',
+                subLabel: 'Up-and-coming Designers',
+                href: '#',
+            },
+            {
+                label: 'Foundation',
+                subLabel: 'Up-and-coming Designers',
+                href: '#',
+            },
+            {
+                label: 'LipLiner',
+                subLabel: 'Up-and-coming Designers',
+                href: '#',
+            },
+            {
+                label: 'LipStick',
+                subLabel: 'Up-and-coming Designers',
+                href: '#',
+            },
+            {
+                label: 'Mascara',
+                subLabel: 'Up-and-coming Designers',
+                href: '#',
+            },
+            {
+                label: 'NailPolish',
                 subLabel: 'Up-and-coming Designers',
                 href: '#',
             },

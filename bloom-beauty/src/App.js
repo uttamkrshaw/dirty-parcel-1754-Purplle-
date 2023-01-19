@@ -1,9 +1,9 @@
-import WithSubnavigation from "./Components/Main/Header"
+import HomePage from "./Components/Pages/HomePage";
 
 function App() {
   return (
     <div className="App">
-      <WithSubnavigation />
+      <HomePage />
     </div>
   );
 }
