@@ -10,3 +10,8 @@ F9B5D0
 EEEEEE
 
 website for color palates :- https://colorhunt.co/
+
+Image optimization - https://tinyjpg.com
+
+for svgo  -  https://jakearchibald.github.io/svgomg/
+ 
