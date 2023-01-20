@@ -1,30 +1,21 @@
 import { Flex, Box, Text, Image } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
-function Part1() {
+function Part7() {
     const slides = [
         {
-            img: "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2,f-gif/mediafiles/ecomm/misc/1673943131_republic-day-header-web-1.gif",
+            img: "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2,f-gif/mediafiles/ecomm/misc/1674044098_paisa-vasool-elite-republic-l-1298x418.gif",
         },
         {
-            img: "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2,f-gif/mediafiles/ecomm/misc/1674109513_rose-hip_web_category-1.gif",
+            img: "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2,f-gif/mediafiles/ecomm/misc/1674044096_skin-care-web.gif",
         },
         {
-            img: "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2/mediafiles/ecomm/misc/1673969538_lakme_mega-beauty-haul-2596x836-1.jpeg",
+            img: "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2,f-gif/mediafiles/ecomm/misc/1674044100_makeup-web.gif",
         },
         {
-            img: "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2,f-gif/mediafiles/ecomm/misc/1674047074_1298x418-5.gif",
+            img: "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2,f-gif/mediafiles/ecomm/misc/1674044105_hair-care-web.gif",
         },
         {
-            img: "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2/mediafiles/ecomm/misc/1674117420_minimalist_bodycare-2596x836-1.jpeg",
-        },
-        {
-            img: "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2/mediafiles/ecomm/misc/1673978743_face_compact_web_hp.jpg",
-        },
-        {
-            img: "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2,f-gif/mediafiles/ecomm/misc/1673969539_k-beauty-web-new-1.gif",
-        },
-        {
-            img: "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2/mediafiles/ecomm/misc/1673969899_wands-of-hair-straightening_webhp-1.jpg",
+            img: "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2,f-gif/mediafiles/ecomm/misc/1674044102_korean-web.gif",
         }
     ];
 
@@ -90,7 +81,7 @@ function Part1() {
 
 };
 
-export default Part1
+export default Part7
 
 {/*
  Changes Made : - 
