@@ -9,6 +9,8 @@ import Part7 from "./HomePage/Part7";
 import Part8 from "./HomePage/Part8";
 import Part9 from "./HomePage/Part9";
 import Part10 from "./HomePage/Part10";
+import DefaultFooter from "../Main/Footer";
+
 function HomePage(){
     return(
         <>
@@ -23,6 +25,7 @@ function HomePage(){
         <Part8 />
         <Part9 />
         <Part10 />
+        <DefaultFooter />
         </>
     )
 }
