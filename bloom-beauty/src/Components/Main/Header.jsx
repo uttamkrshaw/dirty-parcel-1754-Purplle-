@@ -1,4 +1,12 @@
 import {
+    Menu,
+    MenuButton,
+    Avatar,
+    VStack,
+    MenuList,
+    HStack,
+    MenuItem,
+    MenuDivider,
     Box,
     Flex,
     Text,
@@ -21,15 +29,44 @@ import {
     ChevronDownIcon,
     ChevronRightIcon,
 } from '@chakra-ui/icons';
+import { FiChevronDown } from "react-icons/fi"
+//using Link for the navigation
+import { Link as RouterLink } from 'react-router-dom';
+
+// using context api 
+import { useContext } from 'react';
+import { AuthenticationStatus } from '../Context/Authntication';
+import UseAuth from '../Custom-Hooks/UseAuth';
+// logout from the firebase;
+import { signOut } from 'firebase/auth';
+import { auth, provider } from '../Firebase/firebase-config';
+
 
 export default function DefaultNavbar() {
     const { isOpen, onToggle } = useDisclosure();
+    // for checking if we are logged in or not ;
+    const currentUser = UseAuth();
+    console.log('currentUser', currentUser);
+    // using context api to toggle buttons 
+    const { authStatus, setAuthStatus } = useContext(AuthenticationStatus);
+
+    console.log('authstatus', authStatus);
+
+    // using the firebase for logout 
+    const Logout = async () => {
+        setAuthStatus(false);
+        try {
+            await signOut(auth);
+        } catch (error) {
+            console.log('error', error);
+        }
+    }
 
     return (
         <Box>
             <Flex
-                bg={useColorModeValue('white', 'gray.800')}
-                color={useColorModeValue('gray.600', 'white')}
+                bg={useColorModeValue('white', '#EEEEEE')}
+                color={useColorModeValue('gray.600', '#FF597B')}
                 minH={'60px'}
                 py={{ base: 2 }}
                 px={{ base: 4 }}
@@ -51,10 +88,11 @@ export default function DefaultNavbar() {
                     />
                 </Flex>
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+                    <Avatar size='sm' name='Dan Abrahmov' src='https://i.ibb.co/B4sbbC5/logo.png' />
                     <Text
                         textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
                         fontFamily={'heading'}
-                        color={useColorModeValue('gray.800', 'white')}>
+                        color={useColorModeValue('gray.800', '#FF597B')}>
                         BloomBeauty
                     </Text>
 
@@ -68,15 +106,12 @@ export default function DefaultNavbar() {
                     justify={'flex-end'}
                     direction={'row'}
                     spacing={6}>
+                    {authStatus ? <>
+                        {/*
+                     Testing in progress
+                     <Text>{currentUser ? currentUser?.email : 'noperson is logged in '}</Text>
                     <Button
-                        as={'a'}
-                        fontSize={'sm'}
-                        fontWeight={400}
-                        variant={'link'}
-                        href={'#'}>
-                        Sign In
-                    </Button>
-                    <Button
+                        onClick={Logout}
                         display={{ base: 'none', md: 'inline-flex' }}
                         fontSize={'sm'}
                         fontWeight={600}
@@ -86,11 +121,60 @@ export default function DefaultNavbar() {
                         _hover={{
                             bg: 'pink.300',
                         }}>
-                        Sign Up
-                    </Button>
+                        Logout
+                    </Button>  
+                    */}
+                        <Menu>
+                            <MenuButton
+                                py={2}
+                                transition="all 0.3s"
+                                _focus={{ boxShadow: 'none' }}>
+                                <HStack>
+                                    <Avatar
+                                        size={'sm'}
+                                       src={currentUser?.photoURL}
+                                    />
+                                    <VStack
+                                        display={{ base: 'none', md: 'flex' }}
+                                        alignItems="flex-start"
+                                        spacing="1px"
+                                        ml="2">
+                                        <Text fontSize="sm">{currentUser?.displayName}</Text>
+                                    </VStack>
+                                    <Box display={{ base: 'none', md: 'flex' }}>
+                                        <FiChevronDown />
+                                    </Box>
+                                </HStack>
+                            </MenuButton>
+                            <MenuList
+                                bg={('white', 'gray.900')}
+                                borderColor={('gray.200', 'gray.700')}>
+                                <MenuItem>Cart</MenuItem>
+                                <MenuDivider />
+                                <MenuItem><Button onClick={Logout}>Sign out</Button></MenuItem>
+                            </MenuList>
+                        </Menu>
+                    </>
+                        :
+                        <>
+                            <RouterLink to='/signUp'>
+                                <Button
+                                    display={{ base: 'none', md: 'inline-flex' }}
+                                    fontSize={'sm'}
+                                    fontWeight={600}
+                                    color={'white'}
+                                    bg={'pink.400'}
+                                    href={'/signUp'}
+                                    _hover={{
+                                        bg: 'pink.300',
+                                    }}>
+                                    Sign In
+                                </Button>
+                            </RouterLink>
+                        </>
+                    }
                 </Stack>
             </Flex>
-
             <Collapse in={isOpen} animateOpacity>
                 <MobileNav />
             </Collapse>
@@ -99,9 +183,13 @@ export default function DefaultNavbar() {
 }
 
 const DesktopNav = () => {
-    const linkColor = useColorModeValue('gray.600', 'gray.200');
-    const linkHoverColor = useColorModeValue('gray.800', 'white');
-    const popoverContentBgColor = useColorModeValue('white', 'gray.800');
+    // const linkColor = useColorModeValue('gray.600', 'gray.200');
+    // const linkHoverColor = useColorModeValue('gray.800', 'white');
+    // const popoverContentBgColor = useColorModeValue('white', 'gray.800');
+    const linkColor = useColorModeValue('gray.600', '#FF8E9E');
+    const linkHoverColor = useColorModeValue('#EEEEEE', '#FF597B');
+    const popoverContentBgColor = useColorModeValue('#EEEEEE', '#F9B5D0');
+
 
     return (
         <Stack direction={'row'} spacing={4}>
@@ -306,26 +394,11 @@ const NAV_ITEMS: Array<NavItem> = [
         ],
     },
     {
-        label: 'Find Work',
-        children: [
-            {
-                label: 'Job Board',
-                subLabel: 'Find your dream design job',
-                href: '#',
-            },
-            {
-                label: 'Freelance Projects',
-                subLabel: 'An exclusive list for contract work',
-                href: '#',
-            },
-        ],
-    },
-    {
-        label: 'Learn Design',
+        label: 'Search For Products',
         href: '#',
     },
     {
-        label: 'Hire Designers',
+        label: 'OFFERS',
         href: '#',
-    },
+    }
 ];
