@@ -1,4 +1,14 @@
 import { useState } from 'react';
+import { Link } from '@chakra-ui/react';
+import { chakra } from '@chakra-ui/react';
+import { CheckCircleIcon } from '@chakra-ui/icons';
+import {
+    Alert,
+    AlertIcon,
+    AlertTitle,
+    AlertDescription,
+} from '@chakra-ui/react'
+
 import {
     Box,
     Flex,
@@ -17,61 +27,150 @@ import {
     InputGroup,
     InputRightElement
 } from '@chakra-ui/react';
+// importing router link for navigation 
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+// using context api for data changes in navbar 
+import { AuthenticationStatus } from '../Context/Authntication';
+import { useContext } from 'react';
+
+
 import { signInWithPopup, createUserWithEmailAndPassword } from '@firebase/auth';
-import { auth, provider } from '../Firebase/firebase-config';
-import { async } from '@firebase/util';
+import { auth, provider, db } from '../Firebase/firebase-config';
+import { doc, setDoc } from 'firebase/firestore';
+
 
 const avatars = [
     {
         name: 'Ryan Florence',
-        url: 'https://bit.ly/ryan-florence',
+        url: 'https://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/548/original/open-uri20171223-4-1oykkjg?1514062155',
     },
     {
         name: 'Segun Adebayo',
-        url: 'https://bit.ly/sage-adebayo',
+        url: 'https://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/254/original/open-uri20171223-4-tjb63?1514063317',
     },
     {
         name: 'Kent Dodds',
-        url: 'https://bit.ly/kent-c-dodds',
+        url: 'https://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/165/original/data?1514062273',
     },
     {
         name: 'Prosper Otemuyiwa',
-        url: 'https://bit.ly/prosper-baba',
+        url: 'https://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/001/047/original/open-uri20180708-4-e7idod?1531087336',
     },
     {
         name: 'Christian Nwamba',
-        url: 'https://bit.ly/code-beast',
+        url: 'https://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/649/original/open-uri20171223-4-10cz7j2?1514062288',
     },
 ];
 
-export default function SignUp() {
 
+// working on popups
+export function Success() {
+
+    return (<>
+        <Flex
+            w="full"
+            bg="#edf3f8"
+            _dark={{
+                bg: "#3e3e3e",
+            }}
+            p={50}
+            shadow="md"
+            alignItems="center"
+            justifyContent="center"
+        >
+            <Flex
+                maxW="sm"
+                w="full"
+                mx="auto"
+                bg="white"
+                _dark={{
+                    bg: "gray.800",
+                }}
+                rounded="lg"
+                overflow="hidden"
+            >
+                <Flex justifyContent="center" alignItems="center" w={12} bg="green.500">
+                    <Icon as={CheckCircleIcon} color="white" boxSize={6} />
+                </Flex>
+
+                <Box mx={-3} py={2} px={4}>
+                    <Box mx={3}>
+                        <chakra.span
+                            color="green.500"
+                            _dark={{
+                                color: "green.400",
+                            }}
+                            fontWeight="bold"
+                        >
+                            Success
+                        </chakra.span>
+                        <chakra.p
+                            color="gray.600"
+                            _dark={{
+                                color: "gray.200",
+                            }}
+                            fontSize="sm"
+                        >
+                            Your account was registered!
+                        </chakra.p>
+                    </Box>
+                </Box>
+            </Flex>
+        </Flex>;
+    </>)
+}
+
+
+export default function SignUp() {
+ const Navigate = useNavigate()
+    const { authStatus, setAuthStatus } = useContext(AuthenticationStatus);
+    const [regi, setRegi] = useState(false);
     const [mail, setMail] = useState('');
     const [pass, setPass] = useState('');
     const [show, setShow] = useState(false)
     const handleClick = () => setShow(!show)
 
-    const SignUpWithMaliAndPass = async () => {
+    const SignUpWithMailAndPass = async () => {
         try {
             let email = mail;
             let password = pass;
             let userCredential = await createUserWithEmailAndPassword(auth, email, password);
             let user = userCredential.user;
-            console.log('user', user);
+            // creating a users's collection to access the list of all users from the google database;
+            const usersCollectionRef = doc(db, 'users', user.uid);
+            await setDoc(usersCollectionRef, { email, password });
+            //console.log('user', user);
+            // tesing 
+            setRegi(true);
+            setAuthStatus(true);
+            setMail('');
+            setPass('');
+            // <Navigate to='/'/>
+            Navigate("/")
+            //console.log('email',mail);
+            //console.log('password',pass)
         } catch (error) {
             console.log(error);
+            setAuthStatus(false);
         }
     }
 
+    // SignIn with Google
     const signInWithGoogle = async () => {
         try {
             const userCredential = await signInWithPopup(auth, provider);
-            console.log('userCredential', userCredential);
+            //console.log('userCredential', userCredential);
+            const user = userCredential.user;
+            const email = user.email;
+            const usersCollectionRef = doc(db, 'users', user.uid);
+            await setDoc(usersCollectionRef, { email, googleAuth: 'true' });
+            setAuthStatus(true);
+            Navigate("/")
         } catch (error) {
             console.log('error', error)
         }
     }
-
     return (
         <Box position={'relative'}>
             <Container
@@ -84,14 +183,14 @@ export default function SignUp() {
                     <Heading
                         lineHeight={1.1}
                         fontSize={{ base: '3xl', sm: '4xl', md: '5xl', lg: '6xl' }}>
-                        Senior web designers{' '}
+                        Join US{' '}
                         <Text
                             as={'span'}
                             bgGradient="linear(to-r, red.400,pink.400)"
                             bgClip="text">
                             &
                         </Text>{' '}
-                        Full-Stack Developers
+                        Find different ways to win Your loved One's Heart.
                     </Heading>
                     <Stack direction={'row'} spacing={4} align={'center'}>
                         <AvatarGroup>
@@ -159,7 +258,7 @@ export default function SignUp() {
                             color={'gray.800'}
                             lineHeight={1.1}
                             fontSize={{ base: '2xl', sm: '3xl', md: '4xl' }}>
-                            Join our team
+                            Humko Join Kar Lo
                             <Text
                                 as={'span'}
                                 bgGradient="linear(to-r, red.400,pink.400)"
@@ -168,14 +267,15 @@ export default function SignUp() {
                             </Text>
                         </Heading>
                         <Text color={'gray.500'} fontSize={{ base: 'sm', sm: 'md' }}>
-                            We’re looking for amazing engineers just like you! Become a part
-                            of our rockstar engineering team and skyrocket your career!
+                            Join Us & get access to thousand's of products from our different lineUp's
+                            & Use it to get access to your Partner's Heart.
                         </Text>
                     </Stack>
                     <Box as={'form'} mt={10}>
                         <Stack spacing={4}>
                             <Input
                                 placeholder="Email Id"
+                                value={mail}
                                 bg={'gray.100'}
                                 border={0}
                                 color={'gray.500'}
@@ -196,6 +296,7 @@ export default function SignUp() {
                             /> */}
                             <InputGroup size='md'>
                                 <Input
+                                    value={pass}
                                     bg={'gray.100'}
                                     border={0}
                                     color={'gray.500'}
@@ -205,6 +306,7 @@ export default function SignUp() {
                                     //pr='4.5rem'
                                     type={show ? 'text' : 'password'}
                                     placeholder='Password'
+                                    onChange={(e) => { setPass(e.target.value) }}
                                 />
                                 <InputRightElement width='4.5rem'>
                                     <Button h='1.75rem' size='sm' bg={'gray.100'} color={'gray.500'} onClick={handleClick}>
@@ -217,7 +319,7 @@ export default function SignUp() {
                             </Button>
                         </Stack>
                         <Button
-                            onClick={SignUpWithMaliAndPass}
+                            onClick={SignUpWithMailAndPass}
                             fontFamily={'heading'}
                             mt={8}
                             w={'full'}
@@ -229,6 +331,20 @@ export default function SignUp() {
                             }}>
                             Submit
                         </Button>
+                        <RouterLink to='/login'>
+                            <Button
+                                fontFamily={'heading'}
+                                mt={8}
+                                w={'full'}
+                                bgGradient="linear(to-r, red.400,pink.400)"
+                                color={'white'}
+                                _hover={{
+                                    bgGradient: 'linear(to-r, red.400,pink.400)',
+                                    boxShadow: 'xl',
+                                }}>
+                                Already a user? Login
+                            </Button>
+                        </RouterLink>
                     </Box>
                     form
                 </Stack>
