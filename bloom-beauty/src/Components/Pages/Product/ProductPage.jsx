@@ -49,6 +49,7 @@ function Product() {
                 <DefaultNavbar />
             </div>
             <div>
+                <Box bg={'#EEEEEE'}>
                 <Box
                     maxW="7xl"
                     mx="auto"
@@ -68,6 +69,7 @@ function Product() {
                             <ProductCard key={product.id} product={product} />
                         ))}
                     </ProductGrid>
+                </Box>
                 </Box>
             </div>
 
