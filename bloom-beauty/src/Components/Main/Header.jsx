@@ -88,7 +88,7 @@ export default function DefaultNavbar() {
                     />
                 </Flex>
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-                    <Avatar size='sm' name='Dan Abrahmov' src='https://i.ibb.co/B4sbbC5/logo.png' />
+                <RouterLink to={'/'}><Avatar size='sm' name='Dan Abrahmov' src='https://i.ibb.co/B4sbbC5/logo.png' /> </RouterLink>
                     <Text
                         textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
                         fontFamily={'heading'}
@@ -395,7 +395,7 @@ const NAV_ITEMS: Array<NavItem> = [
     },
     {
         label: 'Search For Products',
-        href: '#',
+        href: '/products',
     },
     {
         label: 'OFFERS',

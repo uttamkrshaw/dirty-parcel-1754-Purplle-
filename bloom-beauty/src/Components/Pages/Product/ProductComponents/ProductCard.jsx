@@ -4,7 +4,6 @@ import {
     Button,
     HStack,
     Image,
-    Link,
     Skeleton,
     Stack,
     Text,
@@ -13,6 +12,7 @@ import {
   } from '@chakra-ui/react'
   import * as React from 'react'
 import { FavouriteButton } from './FavoutiteButton'
+import { Link } from 'react-router-dom'
   
   export const ProductCard = (props) => {
     const { product, rootProps } = props
@@ -66,10 +66,11 @@ import { FavouriteButton } from './FavoutiteButton'
             Add to cart
           </Button>
           <Link
-           to={`/products/${id}`}
+           to={`/products/${product.id}`}
             textDecoration="underline"
             fontWeight="medium"
-            color={useColorModeValue('gray.600', 'gray.400')}
+            colour='black'
+            //color={useColorModeValue('gray.600', 'gray.400')}
           >
             More Details
           </Link>
