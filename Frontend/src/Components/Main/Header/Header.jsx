@@ -100,7 +100,7 @@ export default function DefaultNavbar() {
                         Logout
                     </Button>  
                     */}
-                        <Menu>
+                        {/* <Menu>
                             <MenuButton
                                 py={2}
                                 transition="all 0.3s"
@@ -116,7 +116,7 @@ export default function DefaultNavbar() {
                                         spacing="1px"
                                         ml="2">
                                         <Text fontSize="sm">
-                                            {/* {currentUser?.displayName} */}
+                                            {/* {currentUser?.displayName} 
                                             </Text>
                                     </VStack>
                                     <Box display={{ base: 'none', md: 'flex' }}>
@@ -124,14 +124,14 @@ export default function DefaultNavbar() {
                                     </Box>
                                 </HStack>
                             </MenuButton>
-                            <MenuList
+                             <MenuList
                                 bg={('white', 'gray.900')}
                                 borderColor={('gray.200', 'gray.700')}>
                                 <MenuItem>Cart</MenuItem>
                                 <MenuDivider />
                                 <MenuItem><Button >Sign out</Button></MenuItem>
-                            </MenuList>
-                        </Menu>
+                            </MenuList> 
+                        </Menu> */}
                     {/* </> */}
                         :
                         <>

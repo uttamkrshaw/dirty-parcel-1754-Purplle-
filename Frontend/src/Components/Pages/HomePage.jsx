@@ -1,4 +1,4 @@
-import DefaultNavbar from "../Main/Header";
+import DefaultNavbar from "../Main/Header/Header"
 import Part1 from "./HomePage/Part1";
 import Part2 from "./HomePage/Part2";
 import Part3 from "./HomePage/Part3";
@@ -9,12 +9,12 @@ import Part7 from "./HomePage/Part7";
 import Part8 from "./HomePage/Part8";
 import Part9 from "./HomePage/Part9";
 import Part10 from "./HomePage/Part10";
-import DefaultFooter from "../Main/Footer";
+import DefaultFooter from "../Main/Footer/Footer";
 
 function HomePage(){
     return(
         <>
-        <DefaultNavbar />
+       <DefaultNavbar />
         <Part1 />
         <Part2 />
         <Part3 />

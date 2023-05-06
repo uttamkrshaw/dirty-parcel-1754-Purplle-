@@ -190,8 +190,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import DefaultNavbar from '../../Main/Header';
-import DefaultFooter from '../../Main/Footer';
+import DefaultNavbar from '../../Main/Header/Header';
+import DefaultFooter from '../../Main/Footer/Footer';
 
 function SingleProduct() {
 

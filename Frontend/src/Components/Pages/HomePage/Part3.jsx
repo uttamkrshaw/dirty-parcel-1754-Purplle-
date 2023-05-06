@@ -52,16 +52,16 @@ function Part3() {
     return (
         <Flex
             w="full"
-            bg="#edf3f8"
-            _dark={{
-                bg: "#EEEEEE",
-            }}
+            // bg="#edf3f8"
+            // _dark={{
+            //     bg: "#EEEEEE",
+            // }}
             p={10}
             alignItems="center"
             justifyContent="center"
         >
             <Flex w="6xl" overflow="hidden" pos="relative">
-                <Flex h="400px" w="6xl" {...carouselStyle}>
+                <Flex h="400px" w="full" {...carouselStyle}>
                     {slides.map((slide, sid) => (
                         <Box key={`slide-${sid}`} boxSize="full" shadow="md" flex="none">
                             <Text

@@ -3,10 +3,10 @@ function Part2() {
     return (
         <>
             <Flex w="full"
-                bg="#EEEEEE"
-                _dark={{
-                    bg: "#EEEEEE",
-                }}
+                //bg="#EEEEEE"
+                // _dark={{
+                //     bg: "#EEEEEE",
+                // }}
                 alignItems="center"
                 justifyContent="center">
                 <Box margin="auto">

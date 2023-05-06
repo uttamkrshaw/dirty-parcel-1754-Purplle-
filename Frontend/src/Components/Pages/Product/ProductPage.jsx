@@ -2,8 +2,8 @@ import React from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom"
 import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, ButtonGroup, Button , Box } from '@chakra-ui/react'
 import axios from 'axios';
-import DefaultNavbar from "../../Main/Header";
-import DefaultFooter from "../../Main/Footer";
+import DefaultNavbar from "../../Main/Header/Header";
+import DefaultFooter from "../../Main/Footer/Footer";
 
 // testing 
 import { ProductCard } from "./ProductComponents/ProductCard";

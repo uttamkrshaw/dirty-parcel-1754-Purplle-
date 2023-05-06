@@ -3,8 +3,8 @@ import { SimpleGrid, Box, Image } from "@chakra-ui/react";
 function Part4() {
     return (
         <>
-        <SimpleGrid maxW="auto" bg='#EEEEEE'>
-            <SimpleGrid columns={{sm:1, md:2}} spacing='40px' maxW='6xl' margin="auto" bg="#EEEEEE">
+        <SimpleGrid maxW="auto">
+            <SimpleGrid columns={{sm:1, md:2}} spacing='40px' maxW='6xl' margin="auto">
                 <Box>
                     <Image src="https://media6.ppl-media.com/tr:dpr-2/mediafiles/ecomm/misc/1674056586_creme-blush3.gif?tr=f-gif" />
                 </Box>
