@@ -2,15 +2,13 @@ import React from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom"
 import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, ButtonGroup, Button , Box } from '@chakra-ui/react'
 import axios from 'axios';
-import DefaultNavbar from "../../Main/Header/Header";
-import DefaultFooter from "../../Main/Footer/Footer";
-
-// testing 
+import DefaultNavbar from "./../Main/Header/Header";
+import DefaultFooter from "./../Main/Footer/Footer";
 import { ProductCard } from "./ProductComponents/ProductCard";
 import { ProductGrid } from "./ProductComponents/ProductGrid";
 
 function getData() {
-    return axios.get(`http://localhost:3000/products?_limit=50`)
+    return axios.get(`http://localhost:3004/products`)
 }
 
 function Product() {

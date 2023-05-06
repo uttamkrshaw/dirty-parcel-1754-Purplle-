@@ -3,8 +3,8 @@ import { Route, Routes  } from "react-router-dom";
 import HomePage from "../Pages/HomePage";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/Sign-Up";
-import SingleProduct from "../Pages/Product/SingleProductPage";
-import Product from "../Pages/Product/ProductPage";
+import SingleProduct from "../Pages/SingleProductPage";
+import Product from "../Pages/ProductPage";
 
 function AllRouters(){
     return(
