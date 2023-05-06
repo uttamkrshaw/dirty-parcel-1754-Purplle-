@@ -2,7 +2,7 @@ import { Card, CardBody, Box, Image, Stack, Heading, Text, Divider, CardFooter, 
 function Part10() {
     return (
         <>
-            <SimpleGrid maxW='auto' bg='#EEEEEE'>
+            <SimpleGrid maxW='auto'>
                 <SimpleGrid columns={{ sm: 1, md: 2, xl: 4 }} spacing='10px' maxW='6xl' margin="auto" marginTop="20px">
                     <Card maxW='md' margin="auto" bg='#FF597B'>
                         <CardBody>

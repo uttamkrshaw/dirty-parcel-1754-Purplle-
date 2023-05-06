@@ -44,10 +44,6 @@ function Part7() {
     return (
         <Flex
             w="full"
-            bg="#3e3e3e"
-            _dark={{
-                bg: "#EEEEEE",
-            }}
             p={10}
             alignItems="center"
             justifyContent="center"
@@ -82,12 +78,3 @@ function Part7() {
 };
 
 export default Part7
-
-{/*
- Changes Made : - 
- line - 74 & 75  w="full" 
- line - 68 bg- 3e3e3e for dark theme
- line - 66 bg- edf3f8 for white theme 
-
-*/}
-

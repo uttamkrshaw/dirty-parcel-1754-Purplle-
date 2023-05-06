@@ -3,11 +3,11 @@ import { SimpleGrid, Box, Image } from "@chakra-ui/react";
 function Part6() {
     return (
         <>
-        <SimpleGrid maxW="auto" bg='#EEEEEE'>
+        <SimpleGrid maxW="auto">
             <Box margin='auto' maxW='6xl' marginTop='20px'>
                 <Image src="https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2,f-gif/mediafiles/ecomm/misc/1674019675_biggest-brands-on-offer-web.gif" />
             </Box>
-            <SimpleGrid columns={{sm:1, md:2, lg:4}} spacing='20px' maxW='6xl' margin="auto" bg="#EEEEEE" marginTop='20px'>
+            <SimpleGrid columns={{sm:1, md:2, lg:4}} spacing='20px' maxW='6xl' margin="auto"  marginTop='20px'>
                 <Box>
                     <Image src="https://media6.ppl-media.com/tr:dpr-2/mediafiles/ecomm/misc/1674019641_daily-life-forever-52.jpeg" />
                 </Box>
