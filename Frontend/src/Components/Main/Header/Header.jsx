@@ -30,25 +30,25 @@ import {
     ChevronRightIcon,
 } from '@chakra-ui/icons';
 import { FiChevronDown } from "react-icons/fi"
-//using Link for the navigation
 import { Link as RouterLink } from 'react-router-dom';
 
 
 
 export default function DefaultNavbar() {
     const { isOpen, onToggle } = useDisclosure();
+    let authStatus = JSON.parse(localStorage.getItem("auth")) || false
 
     return (
         <Box>
             <Flex
                 bg={useColorModeValue('white', '#EEEEEE')}
-                color={useColorModeValue('gray.600', '#FF597B')}
+                color={useColorModeValue('pink.400', '#FF597B')}
                 minH={'60px'}
                 py={{ base: 2 }}
                 px={{ base: 4 }}
                 borderBottom={1}
                 borderStyle={'solid'}
-                borderColor={useColorModeValue('gray.200', 'gray.900')}
+                borderColor={useColorModeValue('pink.400', 'gray.900')}
                 align={'center'}>
                 <Flex
                     flex={{ base: 1, md: 'auto' }}
@@ -64,11 +64,11 @@ export default function DefaultNavbar() {
                     />
                 </Flex>
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-                <RouterLink to={'/'}><Avatar size='sm' name='Dan Abrahmov' src='https://i.ibb.co/B4sbbC5/logo.png' /> </RouterLink>
+                    <RouterLink to={'/'}><Avatar size='sm' name='Dan Abrahmov' src='https://i.ibb.co/B4sbbC5/logo.png' /> </RouterLink>
                     <Text
                         textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
                         fontFamily={'heading'}
-                        color={useColorModeValue('gray.800', '#FF597B')}>
+                        color={useColorModeValue('pink.400', '#FF597B')}>
                         BloomBeauty
                     </Text>
 
@@ -82,57 +82,44 @@ export default function DefaultNavbar() {
                     justify={'flex-end'}
                     direction={'row'}
                     spacing={6}>
-                    {/* {authStatus ? <> */}
-                        {/*
-                     Testing in progress
-                     <Text>{currentUser ? currentUser?.email : 'noperson is logged in '}</Text>
-                    <Button
-                        onClick={Logout}
-                        display={{ base: 'none', md: 'inline-flex' }}
-                        fontSize={'sm'}
-                        fontWeight={600}
-                        color={'white'}
-                        bg={'pink.400'}
-                        href={'#'}
-                        _hover={{
-                            bg: 'pink.300',
-                        }}>
-                        Logout
-                    </Button>  
-                    */}
-                        {/* <Menu>
-                            <MenuButton
-                                py={2}
-                                transition="all 0.3s"
-                                _focus={{ boxShadow: 'none' }}>
-                                <HStack>
-                                    <Avatar
-                                        size={'sm'}
-                                    //    src={currentUser?.photoURL}
-                                    />
-                                    <VStack
-                                        display={{ base: 'none', md: 'flex' }}
-                                        alignItems="flex-start"
-                                        spacing="1px"
-                                        ml="2">
-                                        <Text fontSize="sm">
-                                            {/* {currentUser?.displayName} 
+                    {authStatus ?
+                        <>
+                            <Menu>
+                                <MenuButton
+                                    py={2}
+                                    transition="all 0.3s"
+                                    _focus={{ boxShadow: 'none' }}>
+                                    <HStack>
+                                        <Avatar
+                                            size={'sm'}
+                                        />
+                                        <VStack
+                                            display={{ base: 'none', md: 'flex' }}
+                                            alignItems="flex-start"
+                                            spacing="1px"
+                                            ml="2">
+                                            <Text fontSize="xl">
+                                                user
                                             </Text>
-                                    </VStack>
-                                    <Box display={{ base: 'none', md: 'flex' }}>
-                                        <FiChevronDown />
-                                    </Box>
-                                </HStack>
-                            </MenuButton>
-                             <MenuList
-                                bg={('white', 'gray.900')}
-                                borderColor={('gray.200', 'gray.700')}>
-                                <MenuItem>Cart</MenuItem>
-                                <MenuDivider />
-                                <MenuItem><Button >Sign out</Button></MenuItem>
-                            </MenuList> 
-                        </Menu> */}
-                    {/* </> */}
+                                        </VStack>
+                                        <Box display={{ base: 'none', md: 'flex' }}>
+                                            <FiChevronDown />
+                                        </Box>
+                                    </HStack>
+                                </MenuButton>
+                                <MenuList
+                                    bg={'white'}
+                                    borderColor={('white', 'pink.400')}>
+                                    <MenuItem>User Details</MenuItem>
+                                    <MenuDivider />
+                                    <MenuItem>Cart</MenuItem>
+                                    <MenuDivider />
+                                    <MenuItem>Admin Panel</MenuItem>
+                                    <MenuDivider />
+                                    <MenuItem>Sign out</MenuItem>
+                                </MenuList>
+                            </Menu>
+                        </>
                         :
                         <>
                             <RouterLink to='/signUp'>
@@ -161,11 +148,8 @@ export default function DefaultNavbar() {
 }
 
 const DesktopNav = () => {
-    // const linkColor = useColorModeValue('gray.600', 'gray.200');
-    // const linkHoverColor = useColorModeValue('gray.800', 'white');
-    // const popoverContentBgColor = useColorModeValue('white', 'gray.800');
-    const linkColor = useColorModeValue('gray.600', '#FF8E9E');
-    const linkHoverColor = useColorModeValue('#EEEEEE', '#FF597B');
+    const linkColor = useColorModeValue('pink.400', '#FF8E9E');
+    const linkHoverColor = useColorModeValue('pink.600', '#FF597B');
     const popoverContentBgColor = useColorModeValue('#EEEEEE', '#F9B5D0');
 
 
@@ -192,10 +176,10 @@ const DesktopNav = () => {
                         {navItem.children && (
                             <PopoverContent
                                 border={0}
-                                boxShadow={'xl'}
+                                boxShadow={'lg'}
                                 bg={popoverContentBgColor}
-                                p={4}
-                                rounded={'xl'}
+                                p={2}
+                                rounded={'lg'}
                                 minW={'sm'}>
                                 <Stack>
                                     {navItem.children.map((child) => (
@@ -274,11 +258,12 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
                 }}>
                 <Text
                     fontWeight={600}
-                    color={useColorModeValue('gray.600', 'gray.200')}>
+                    color={useColorModeValue('pink.400', 'gray.200')}>
                     {label}
                 </Text>
                 {children && (
                     <Icon
+                        color={'pink.400'}
                         as={ChevronDownIcon}
                         transition={'all .25s ease-in-out'}
                         transform={isOpen ? 'rotate(180deg)' : ''}
@@ -298,7 +283,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
                     align={'start'}>
                     {children &&
                         children.map((child) => (
-                            <Link key={child.label} py={2} href={child.href}>
+                            <Link color={"pink.300"} key={child.label} py={2} href={child.href}>
                                 {child.label}
                             </Link>
                         ))}
@@ -321,52 +306,42 @@ const NAV_ITEMS: Array<NavItem> = [
         children: [
             {
                 label: 'Blush',
-                subLabel: 'Trending Design to inspire you',
                 href: '#',
             },
             {
                 label: 'Bronzer',
-                subLabel: 'Up-and-coming Designers',
                 href: '#',
             },
             {
                 label: 'Eyebrow',
-                subLabel: 'Up-and-coming Designers',
                 href: '#',
             },
             {
                 label: 'EyeLiner',
-                subLabel: 'Up-and-coming Designers',
                 href: '#',
             },
             {
                 label: 'Eyeshadow',
-                subLabel: 'Up-and-coming Designers',
                 href: '#',
             },
             {
                 label: 'Foundation',
-                subLabel: 'Up-and-coming Designers',
                 href: '#',
             },
             {
                 label: 'LipLiner',
-                subLabel: 'Up-and-coming Designers',
                 href: '#',
             },
             {
                 label: 'LipStick',
-                subLabel: 'Up-and-coming Designers',
                 href: '#',
             },
             {
                 label: 'Mascara',
-                subLabel: 'Up-and-coming Designers',
                 href: '#',
             },
             {
                 label: 'NailPolish',
-                subLabel: 'Up-and-coming Designers',
                 href: '#',
             },
         ],
