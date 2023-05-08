@@ -49,7 +49,7 @@ function Part7() {
             justifyContent="center"
         >
             <Flex w="6xl" overflow="hidden">
-                <Flex pos="relative" h="400px" w="6xl" {...carouselStyle}>
+                <Flex pos="relative" h="400px" w="full" {...carouselStyle}>
                     {slides.map((slide, sid) => (
                         <Box key={`slide-${sid}`} flex="none" boxSize="full" shadow="md">
                             <Text

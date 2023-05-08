@@ -53,10 +53,6 @@ function Part1() {
     return (
         <Flex
             w="full"
-            // bg="#3e3e3e"
-            // _dark={{
-            //     bg: "#EEEEEE",
-            // }}
             p={10}
             alignItems="center"
             justifyContent="center"
