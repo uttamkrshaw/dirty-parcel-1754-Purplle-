@@ -119,9 +119,12 @@ export default function SignUp() {
  const Navigate = useNavigate()
    
     const [regi, setRegi] = useState(false);
-    const [mail, setMail] = useState('');
-    const [pass, setPass] = useState('');
-    const [show, setShow] = useState(false)
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [username,setUsername] = useState('');
+    const [age,setAge] = useState(0);
+
+    const [show, setShow] = useState(false);
     const handleClick = () => setShow(!show)
 
     // SignIn with Google
@@ -229,28 +232,29 @@ export default function SignUp() {
                         <Stack spacing={4}>
                             <Input
                                 placeholder="Email Id"
-                                value={mail}
+                                value={email}
                                 bg={'gray.100'}
                                 border={0}
                                 color={'gray.500'}
                                 _placeholder={{
                                     color: 'gray.500',
                                 }}
-                                onChange={(e) => { setMail(e.target.value) }}
+                                onChange={(e) => { setEmail(e.target.value) }}
                             />
-                            {/* <Input
+                            <Input
                                 placeholder="Password"
                                 bg={'gray.100'}
                                 border={0}
                                 color={'gray.500'}
+                                value={password}
                                 _placeholder={{
                                     color: 'gray.500',
                                 }}
-                                onChange={(e)=>{setPass(e.target.value)}}
-                            /> */}
+                                onChange={(e)=>{setPassword(e.target.value)}}
+                            />
                             <InputGroup size='md'>
                                 <Input
-                                    value={pass}
+                                    value={password}
                                     bg={'gray.100'}
                                     border={0}
                                     color={'gray.500'}
@@ -260,7 +264,7 @@ export default function SignUp() {
                                     //pr='4.5rem'
                                     type={show ? 'text' : 'password'}
                                     placeholder='Password'
-                                    onChange={(e) => { setPass(e.target.value) }}
+                                    onChange={(e) => { setPassword(e.target.value) }}
                                 />
                                 <InputRightElement width='4.5rem'>
                                     <Button h='1.75rem' size='sm' bg={'gray.100'} color={'gray.500'} onClick={handleClick}>
@@ -268,9 +272,6 @@ export default function SignUp() {
                                     </Button>
                                 </InputRightElement>
                             </InputGroup>
-                            <Button  fontFamily={'heading'} bg={'gray.200'} color={'gray.800'}>
-                                Sign In with Google
-                            </Button>
                         </Stack>
                         <Button
                            
