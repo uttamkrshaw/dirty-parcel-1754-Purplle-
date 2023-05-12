@@ -48,12 +48,12 @@ userRouter.post("/register", async (req, res) => {
                 res.status(200).send("New User Registration Successful")
             })
         } catch (error) {
-            res.status(400).send({"msg": error.message})
+            res.status(400).send(error.message)
         }
     } else if (usernamefound.length >= 1 && useremailfound.length >= 1) {
-        res.status(400).send({"msg": "User Already Exists with Same Credentials. Pls login with same Credentials or Enter new Credentials to Create a Account"})
+        res.status(400).send("User Already Exists with Same Credentials. Pls login with same Credentials or Enter new Credentials to Create a Account")
     } else if (usernamefound.length === 0 && useremailfound.length >= 1) {
-        res.status(400).send({"msg": "An account is Already Registered with this emailId!"})
+        res.status(400).send("An account is Already Registered with this emailId!")
     }
 })
 
@@ -74,10 +74,10 @@ userRouter.post("/login", async (req, res) => {
                     'password'
                 ),
                 "user": user
-            }) : res.status(400).send({"msg": "Wrong Password"})
-        }) : res.status(400).send({"msg": "No User Found With Such Credentials"})
+            }) : res.status(400).send("Wrong Password")
+        }) : res.status(400).send("No User Found With Such Credentials")
     } catch (error) {
-        res.status(400).send({"msg": error.message})
+        res.status(400).send(error.message)
     }
 })
 

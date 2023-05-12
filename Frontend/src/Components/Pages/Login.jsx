@@ -14,7 +14,12 @@ import {
     IconProps,
     Icon,
 } from '@chakra-ui/react';
+import {
+    useToast,
+} from "@chakra-ui/react";
+
 import { useState } from 'react';
+import axios from "axios";
 
 // importing link for navigation 
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
@@ -50,8 +55,40 @@ export default function Login() {
     const Navigate = useNavigate();
 
     //for loginto our account
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const toast = useToast();
+    const handleLogin = () => {
+        const payload = {
+            username,
+            password
+        }
+        axios({
+            method: "post",
+            url: "http://localhost:4500/users/login",
+            data: payload
+        }).then((res) => {
+            toast({
+                title: "Account created!",
+                description: res.data.msg,
+                status: "success",
+                duration: 3000,
+                isClosable: true,
+            });
+            console.log(res.data.msg)
+
+        }).catch((err) => {
+            toast({
+                title: "Account created!",
+                description: err.response.data,
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
+        })
+
+    }
+
 
     return (
         <Box position={'relative'}>
@@ -155,9 +192,9 @@ export default function Login() {
                     <Box as={'form'} mt={10}>
                         <Stack spacing={4}>
                             <Input
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Enter Email Id For Login"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                placeholder="Enter Username For Login"
                                 bg={'gray.100'}
                                 border={0}
                                 color={'gray.500'}
@@ -176,21 +213,9 @@ export default function Login() {
                                     color: 'gray.500',
                                 }}
                             />
-                            {/* <Input
-                  placeholder="+1 (___) __-___-___"
-                  bg={'gray.100'}
-                  border={0}
-                  color={'gray.500'}
-                  _placeholder={{
-                    color: 'gray.500',
-                  }}
-                /> */}
-                            {/* <Button fontFamily={'heading'} bg={'gray.200'} color={'gray.800'}>
-                  Upload CV
-                </Button> */}
                         </Stack>
                         <Button
-                            // onClick={}
+                            onClick={handleLogin}
                             fontFamily={'heading'}
                             mt={8}
                             w={'full'}
