@@ -22,8 +22,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import DefaultNavbar from './../Main/Header/Header';
-import DefaultFooter from './../Main/Footer/Footer';
+import DefaultNavbar from '../Mini_Components/User_Site/Header/Header';
+import DefaultFooter from '../Mini_Components/User_Site/Footer/Footer';
 
 function SingleProduct() {
 

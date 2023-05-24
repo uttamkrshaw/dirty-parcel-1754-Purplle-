@@ -2,10 +2,10 @@ import React from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom"
 import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, ButtonGroup, Button , Box } from '@chakra-ui/react'
 import axios from 'axios';
-import DefaultNavbar from "./../Main/Header/Header";
-import DefaultFooter from "./../Main/Footer/Footer";
-import { ProductCard } from "./ProductComponents/ProductCard";
-import { ProductGrid } from "./ProductComponents/ProductGrid";
+import DefaultNavbar from "../Mini_Components/User_Site/Header/Header"
+import DefaultFooter from "../Mini_Components/User_Site/Footer/Footer";
+import { ProductCard } from "../Mini_Components/User_Site/ProductPageComponents/ProductCard";
+import { ProductGrid } from "../Mini_Components/User_Site/ProductPageComponents/ProductGrid";
 
 function getData() {
     return axios.get(`http://localhost:3004/products`)
