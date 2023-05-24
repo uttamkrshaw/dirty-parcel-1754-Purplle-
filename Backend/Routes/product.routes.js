@@ -9,10 +9,21 @@ const {admin} = require("../Middleware/admin.middleware")
 
 productRouter.get("/", auth, async (req, res) => {
     try {
-        const product = await ProductModel.find()
+        const {page,category} = req.query
+        let skip
+        if (page) 
+            skip = (page - 1) * 30;
+         else 
+            skip = 0
+        
+        const product = await ProductModel.find({
+            category: {
+                $regex: `(?i)${category}`
+            }
+        }).skip(skip).limit(30);
         res.status(200).send(product)
     } catch (error) {
-        res.status(400).send({"msg":error.message})
+        res.status(400).send({"msg": error.message})
     }
 })
 
@@ -23,9 +34,9 @@ productRouter.post("/add", admin, async (req, res) => {
     try {
         const product = new ProductModel(req.body)
         await product.save()
-        res.status(200).send({"msg":"New Product Added"})
+        res.status(200).send({"msg": "New Product Added"})
     } catch (error) {
-        res.status(400).send({"msg":error.message})
+        res.status(400).send({"msg": error.message})
     }
 })
 
@@ -34,21 +45,21 @@ productRouter.post("/add", admin, async (req, res) => {
 productRouter.patch("/update/:_id", admin, async (req, res) => {
     const {_id} = req.params
     try {
-        const product = await ProductModel.findByIdAndUpdate(_id,req.body)
-        res.status(200).send({"msg":"Product Details Updated"})
+        const product = await ProductModel.findByIdAndUpdate(_id, req.body)
+        res.status(200).send({"msg": "Product Details Updated"})
     } catch (error) {
-        res.status(400).send({"msg":error.message})
+        res.status(400).send({"msg": error.message})
 
     }
 })
 
 // --------------->>>>>>>> Product Details Delete <<<<<<<<-------------------
 
-productRouter.delete("/delete/:_id",admin,async(req, res) => {
+productRouter.delete("/delete/:_id", admin, async (req, res) => {
     const {_id} = req.params
     try {
         const product = await ProductModel.findByIdAndDelete(_id)
-        res.status(200).send({"msg":"Product Deleted"})
+        res.status(200).send({"msg": "Product Deleted"})
     } catch (error) {
         res.status(400).send({"msg": error.message})
 
@@ -59,3 +70,14 @@ productRouter.delete("/delete/:_id",admin,async(req, res) => {
 module.exports = {
     productRouter
 }
+
+
+// movieRouter.get("/movieTitle", async (req, res)=>{
+//     try {
+//      const query = req.query.q
+//      let movies = await movieModel.find({Title: {$regex:`(?i)${query}`}})
+//      res.send(movies)
+//     } catch (error) {
+//      console.log("Error: " + error)
+//     }
+// })

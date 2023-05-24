@@ -18,12 +18,10 @@ function Product() {
     const products = useSelector((store) => store.ProductReducer.products)
 
     const [product, setProduct] = useState(products)
-    // on component mount make a upi call get the data & display the data.
-    // as soon as someone clicks on the card u move to a new page where u will get more data.
-
+    const [page,setPage]=useState(10)
 
     React.useEffect(() => {
-        dispatch(getProductData(token))
+        dispatch(getProductData(page))
     }, [])
 
     return (

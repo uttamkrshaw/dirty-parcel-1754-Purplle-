@@ -14,7 +14,7 @@ export const getSingleProducts = (payload) => {
 
 export const getProductData = (payload) => (dispatch) => {
     const token = JSON.parse(localStorage.getItem("token"))
-    const url = `http://localhost:4500/product/`
+    const url = `http://localhost:4500/product/?page=${payload}`
     axios.get(url, {
         'headers': {
             'Authorization': `bearer ${token}`
