@@ -1,4 +1,4 @@
-import {USER_DETAILS} from "../ActionTypes/actionType"
+import {USER_DETAILS,USER_TOKEN} from "../ActionTypes/actionType"
 
 export const userData = (payload) => {
     return {type: USER_DETAILS, payload}

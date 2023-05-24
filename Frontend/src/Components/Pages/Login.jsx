@@ -23,6 +23,8 @@ import { useDispatch } from "react-redux"
 import { useState } from 'react';
 import axios from "axios";
 
+import {userData,userToken} from "../Redux/UserSection/Action/action"
+
 // importing link for navigation 
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
@@ -57,6 +59,7 @@ export default function Login() {
     const dispatch = useDispatch();
     const Navigate = useNavigate();
 
+
     //for loginto our account
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -78,8 +81,9 @@ export default function Login() {
                 duration: 3000,
                 isClosable: true,
             });
-        //    Dispatch()
         console.log(res.data)
+        dispatch(userToken(res.data.token))
+        dispatch(userData(res.data.user))
 
         }).catch((err) => {
             toast({
