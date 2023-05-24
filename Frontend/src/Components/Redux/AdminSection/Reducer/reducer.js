@@ -1,12 +1,11 @@
 const initialState = {
-    user:[],
-    isLoading:false,
-    isError:false
+    isLoading: false,
+    isError: false
 }
 
-export const reducer = (state=initialState,action) =>{
-switch (action) {
-    default:
-        return state
-}
+export const reducer = (state = initialState, {type, payload}) => {
+    switch (type) {
+        default:
+            return state
+    }
 }

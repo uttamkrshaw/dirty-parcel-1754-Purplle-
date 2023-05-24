@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom"
-import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, ButtonGroup, Button , Box } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, ButtonGroup, Button, Box } from '@chakra-ui/react'
 import axios from 'axios';
 import DefaultNavbar from "../Mini_Components/User_Site/Header/Header"
 import DefaultFooter from "../Mini_Components/User_Site/Footer/Footer";
@@ -48,26 +48,26 @@ function Product() {
             </div>
             <div>
                 <Box bg={'#EEEEEE'}>
-                <Box
-                    maxW="7xl"
-                    mx="auto"
-                    px={{
-                        base: '4',
-                        md: '8',
-                        lg: '12',
-                    }}
-                    py={{
-                        base: '6',
-                        md: '8',
-                        lg: '12',
-                    }}
-                >
-                    <ProductGrid>
-                        {data.map((product) => (
-                            <ProductCard key={product.id} product={product} />
-                        ))}
-                    </ProductGrid>
-                </Box>
+                    <Box
+                        maxW="7xl"
+                        mx="auto"
+                        px={{
+                            base: '4',
+                            md: '8',
+                            lg: '12',
+                        }}
+                        py={{
+                            base: '6',
+                            md: '8',
+                            lg: '12',
+                        }}
+                    >
+                        <ProductGrid>
+                            {data.map((product) => (
+                                <ProductCard key={product.id} product={product} />
+                            ))}
+                        </ProductGrid>
+                    </Box>
                 </Box>
             </div>
 

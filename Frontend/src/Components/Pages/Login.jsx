@@ -15,8 +15,10 @@ import {
     Icon,
 } from '@chakra-ui/react';
 import {
-    useToast,
+    useToast
 } from "@chakra-ui/react";
+
+import { useDispatch } from "react-redux"
 
 import { useState } from 'react';
 import axios from "axios";
@@ -52,6 +54,7 @@ const avatars = [
 export default function Login() {
 
     // to toggle authentication status 
+    const dispatch = useDispatch();
     const Navigate = useNavigate();
 
     //for loginto our account
@@ -69,13 +72,14 @@ export default function Login() {
             data: payload
         }).then((res) => {
             toast({
-                title: "Account created!",
+                title: "Login Successful!",
                 description: res.data.msg,
                 status: "success",
                 duration: 3000,
                 isClosable: true,
             });
-            console.log(res.data.msg)
+        //    Dispatch()
+        console.log(res.data)
 
         }).catch((err) => {
             toast({
