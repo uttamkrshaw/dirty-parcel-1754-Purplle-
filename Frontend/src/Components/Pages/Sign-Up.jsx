@@ -22,7 +22,7 @@ import {
   InputRightElement,
 } from "@chakra-ui/react";
 // importing router link for navigation
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const avatars = [
@@ -49,6 +49,9 @@ const avatars = [
 ];
 
 export default function SignUp() {
+
+  const navigate = useNavigate()
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -91,6 +94,7 @@ export default function SignUp() {
           duration: 3000,
           isClosable: true,
         });
+        navigate("/login")
       })
       .catch((err) => {
         toast({
@@ -269,7 +273,7 @@ export default function SignUp() {
               </InputGroup>
               <Input
                 placeholder="Enter Age"
-                type={Number}
+                type="Number"
                 bg={"gray.100"}
                 border={0}
                 color={"gray.500"}

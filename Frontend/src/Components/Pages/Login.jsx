@@ -18,12 +18,13 @@ import {
     useToast
 } from "@chakra-ui/react";
 
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector} from "react-redux"
 
 import { useState } from 'react';
+
 import axios from "axios";
 
-import {userData,userToken} from "../Redux/UserSection/Action/action"
+import { userData, userToken } from "../Redux/UserSection/Action/action"
 
 // importing link for navigation 
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
@@ -57,9 +58,10 @@ export default function Login() {
 
     // to toggle authentication status 
     const dispatch = useDispatch();
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
 
-
+    const user = useSelector((store)=>store.UserReducer.user)
+    console.log("user",user)
     //for loginto our account
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -81,10 +83,9 @@ export default function Login() {
                 duration: 3000,
                 isClosable: true,
             });
-        console.log(res.data)
-        dispatch(userToken(res.data.token))
-        dispatch(userData(res.data.user))
-
+            dispatch(userToken(res.data.token))
+            dispatch(userData(res.data.user))
+            navigate("/")
         }).catch((err) => {
             toast({
                 title: "Account created!",

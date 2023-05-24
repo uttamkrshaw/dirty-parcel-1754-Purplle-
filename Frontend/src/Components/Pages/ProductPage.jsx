@@ -1,53 +1,39 @@
 import React from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, ButtonGroup, Button, Box } from '@chakra-ui/react'
 import axios from 'axios';
 import DefaultNavbar from "../Mini_Components/User_Site/Header/Header"
 import DefaultFooter from "../Mini_Components/User_Site/Footer/Footer";
 import { ProductCard } from "../Mini_Components/User_Site/ProductPageComponents/ProductCard";
 import { ProductGrid } from "../Mini_Components/User_Site/ProductPageComponents/ProductGrid";
-
-function getData() {
-    return axios.get(`http://localhost:3004/products`)
-}
+import { useDispatch, useSelector } from "react-redux"
+import { getProductData } from "../Redux/ProductSection/Action/action";
+import { store } from "../Redux/store";
+import { useState } from "react";
 
 function Product() {
+
+    const dispatch = useDispatch()
+    const token = useSelector((store) => store.UserReducer.token)
+    const products = useSelector((store) => store.ProductReducer.products)
+
+    const [product, setProduct] = useState(products)
     // on component mount make a upi call get the data & display the data.
     // as soon as someone clicks on the card u move to a new page where u will get more data.
-    const [loading, setLoading] = React.useState(false);
-    const [data, setData] = React.useState([]);
-    const [error, setError] = React.useState(false);
-    // const isAuth = true;
-    //  const nav = useNavigate();
 
-
-    const fetchHandleData = () => {
-        setLoading(true);
-        getData()
-            .then((res) => { setLoading(false); setData(res.data) })
-            .catch((err) => { setLoading(false); setError(true) })
-    }
 
     React.useEffect(() => {
-        fetchHandleData();
+        dispatch(getProductData(token))
     }, [])
 
-    // if (!isAuth) {
-    //     return <Navigate to="/" />
-    // }
-
-
-    console.log(data);
-
-
     return (
-        loading ? <h1>Ruko Jara Sabar Karo</h1> : error ? <h1>Ruka Bhai Phr ja aur check kara sb</h1> : <div>
+        //loading ? <h1>Ruko Jara Sabar Karo</h1> : error ? <h1>Ruka Bhai Phr ja aur check kara sb</h1> :
+        <>
             <div>
-                {/* <button onClick={()=>nav("/")}>Go to home page</button> */}
                 <DefaultNavbar />
             </div>
             <div>
-                <Box bg={'#EEEEEE'}>
+                <Box >
                     <Box
                         maxW="7xl"
                         mx="auto"
@@ -63,7 +49,7 @@ function Product() {
                         }}
                     >
                         <ProductGrid>
-                            {data.map((product) => (
+                            {product.map((product) => (
                                 <ProductCard key={product.id} product={product} />
                             ))}
                         </ProductGrid>
@@ -71,7 +57,7 @@ function Product() {
                 </Box>
             </div>
 
-        </div>
+        </>
     )
 }
 export default Product;

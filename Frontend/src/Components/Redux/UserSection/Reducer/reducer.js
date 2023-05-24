@@ -1,4 +1,4 @@
-import {USER_DETAILS,USER_TOKEN} from "../ActionTypes/actionType"
+import {USER_DETAILS, USER_TOKEN} from "../ActionTypes/actionType"
 
 
 const initialState = {
@@ -20,7 +20,8 @@ export const reducer = (state = initialState, {type, payload}) => {
         case USER_TOKEN:
             return {
                 ...state,
-                token: payload
+                token: payload,
+                isAuth: true
             }
         default:
             return state

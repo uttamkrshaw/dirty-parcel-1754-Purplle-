@@ -54,6 +54,8 @@ userRouter.post("/register", async (req, res) => {
         res.status(400).send("User Already Exists with Same Credentials. Pls login with same Credentials or Enter new Credentials to Create a Account")
     } else if (usernamefound.length === 0 && useremailfound.length >= 1) {
         res.status(400).send("An account is Already Registered with this emailId!")
+    }else if (usernamefound.length >= 1  && useremailfound.length === 0) {
+        res.status(400).send("An account is Already Registered with this username!")
     }
 })
 
