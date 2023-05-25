@@ -22,13 +22,17 @@ function Product() {
     const dispatch = useDispatch()
     const token = useSelector((store) => store.UserReducer.token)
     const { products, isLoading, isError } = useSelector((store) => store.ProductReducer)
-    console.log("products", products);
     const [product, setProduct] = useState(products)
     const [page, setPage] = useState(10)
+    const [load,setLoad] = useState(false)
+
+    const handleLoad = () =>{
+        setLoad(!load)
+    }
 
     React.useEffect(() => {
         dispatch(getProductData(page))
-    }, [])
+    }, [load])
 
     return (
         isLoading ?
@@ -44,7 +48,7 @@ function Product() {
                 :
                 <>
                     <div>
-                        <DefaultNavbar />
+                        <DefaultNavbar handleLoad={handleLoad} />
                     </div>
                     <div>
                         <Stack direction={['column', 'row']} spacing='24px' divider={<StackDivider borderColor='gray.200' />}>

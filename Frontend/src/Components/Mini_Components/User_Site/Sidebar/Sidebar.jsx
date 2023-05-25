@@ -9,7 +9,7 @@ import {
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { getBrandProductData, getCategoryProductData, getProductTypeData, getTagProductData } from '../../../Redux/ProductSection/Action/action';
-export const Sidebar = () => {
+export const Sidebar = ({handleLoad}) => {
     const dispatch = useDispatch()
     const [category, setCategory] = useState("")
     const [brand, setBrand] = useState("")
@@ -46,7 +46,7 @@ export const Sidebar = () => {
                     <AccordionPanel pb={4}>
                         <RadioGroup onChange={(e) => { handleCategory(e) }} value={category}>
                             <Stack direction={'column'}>
-                                <Radio value='1'>First</Radio>
+                                <Radio value='liquid'>liquid</Radio>
                                 <Radio value='2'>Second</Radio>
                                 <Radio value='3'>Third</Radio>
                             </Stack>
