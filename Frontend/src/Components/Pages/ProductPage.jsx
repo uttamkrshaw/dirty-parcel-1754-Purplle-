@@ -4,7 +4,7 @@ import {
     Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, ButtonGroup, Button, Box, Skeleton, SkeletonCircle, SkeletonText, Alert,
     AlertIcon,
     AlertTitle,
-    AlertDescription,
+    AlertDescription, StackDivider
 } from '@chakra-ui/react'
 import axios from 'axios';
 import DefaultNavbar from "../Mini_Components/User_Site/Header/Header"
@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getProductData } from "../Redux/ProductSection/Action/action";
 import { store } from "../Redux/store";
 import { useState } from "react";
+import { Sidebar } from "../Mini_Components/User_Site/Sidebar/Sidebar";
 
 function Product() {
 
@@ -46,28 +47,31 @@ function Product() {
                         <DefaultNavbar />
                     </div>
                     <div>
-                        <Box >
-                            <Box
-                                maxW="7xl"
-                                mx="auto"
-                                px={{
-                                    base: '4',
-                                    md: '8',
-                                    lg: '12',
-                                }}
-                                py={{
-                                    base: '6',
-                                    md: '8',
-                                    lg: '12',
-                                }}
-                            >
-                                <ProductGrid>
-                                    {product.map((product) => (
-                                        <ProductCard key={product.id} product={product} />
-                                    ))}
-                                </ProductGrid>
+                        <Stack direction={['column', 'row']} spacing='24px' divider={<StackDivider borderColor='gray.200' />}>
+                            <Sidebar />
+                            <Box >
+                                <Box
+                                    maxW="7xl"
+                                    mx="auto"
+                                    px={{
+                                        base: '4',
+                                        md: '8',
+                                        lg: '12',
+                                    }}
+                                    py={{
+                                        base: '6',
+                                        md: '8',
+                                        lg: '12',
+                                    }}
+                                >
+                                    <ProductGrid>
+                                        {product.map((product) => (
+                                            <ProductCard key={product.id} product={product} />
+                                        ))}
+                                    </ProductGrid>
+                                </Box>
                             </Box>
-                        </Box>
+                        </Stack>
                     </div>
                 </>
     )
