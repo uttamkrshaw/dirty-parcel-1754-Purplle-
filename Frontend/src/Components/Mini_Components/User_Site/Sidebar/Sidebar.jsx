@@ -147,26 +147,25 @@ export const Sidebar = () => {
                                 <Radio value='mineral fusion'>mineral fusion</Radio>
                                 <Radio value='misa'>misa</Radio>
                                 <Radio value='mistura'>mistura</Radio>
-                                <Radio value='2'>Second</Radio>
-                                <Radio value='3'>Third</Radio><Radio value='1'>First</Radio>
-                                <Radio value='2'>Second</Radio>
-                                <Radio value='3'>Third</Radio><Radio value='1'>First</Radio>
-                                <Radio value='2'>Second</Radio>
-                                <Radio value='3'>Third</Radio><Radio value='1'>First</Radio>
-                                <Radio value='2'>Second</Radio>
-                                <Radio value='3'>Third</Radio><Radio value='1'>First</Radio>
-                                <Radio value='2'>Second</Radio>
-                                <Radio value='3'>Third</Radio><Radio value='1'>First</Radio>
-                                <Radio value='2'>Second</Radio>
-                                <Radio value='3'>Third</Radio><Radio value='1'>First</Radio>
-                                <Radio value='2'>Second</Radio>
-                                <Radio value='3'>Third</Radio><Radio value='1'>First</Radio>
-                                <Radio value='2'>Second</Radio>
-                                <Radio value='3'>Third</Radio><Radio value='1'>First</Radio>
-                                <Radio value='2'>Second</Radio>
-                                <Radio value='3'>Third</Radio><Radio value='1'>First</Radio>
-                                <Radio value='2'>Second</Radio>
-                                <Radio value='3'>Third</Radio>
+                                <Radio value='moov'>moov</Radio>
+                                <Radio value='nudus'>nudus</Radio>
+                                <Radio value='nyx'>nyx</Radio>
+                                <Radio value='orly'>orly</Radio>
+                                <Radio value='pacifica'>pacifica</Radio>
+                                <Radio value='penny lane organics'>penny lane organics</Radio>
+                                <Radio value='physicians formula'>physicians formula</Radio>
+                                <Radio value='piggy paint'>piggy paint</Radio>
+                                <Radio value='pure anada'>pure anada</Radio>
+                                <Radio value='rejuva minerals'>rejuva minerals</Radio>
+                                <Radio value='revlon'>revlon</Radio>
+                                <Radio value='salon perfect'>salon perfect</Radio>
+                                <Radio value='sante'>sante</Radio>
+                                <Radio value='sinful colours'>sinful colours</Radio>
+                                <Radio value='smashbox'>smashbox</Radio>
+                                <Radio value='stila'>stila</Radio>
+                                <Radio value='suncoat'>suncoat</Radio>
+                                <Radio value='wet n wild'>wet n wild</Radio>
+                                <Radio value='zorah'>zorah</Radio>
                             </Stack>
                         </RadioGroup>
                     </AccordionPanel>
