@@ -7,20 +7,27 @@ const {admin} = require("../Middleware/admin.middleware")
 
 // --------------->>>>>>>> Get Product List <<<<<<<<-------------------
 
-productRouter.get("/", auth, async (req, res) => {
+productRouter.get("/getall", auth, async (req, res) => {
     try {
-        const {page,category} = req.query
+        // const {page,category} = req.query
+        // let skip
+        // if (page)
+        //     skip = (page - 1) * 30;
+        // else
+        //     skip = 0
+
+        // const product = await ProductModel.find({
+        //     category: {
+        //         $regex: `(?i)${category}`
+        //     }
+        // }).skip(skip).limit(30);
+        const {page} = req.query
         let skip
         if (page) 
             skip = (page - 1) * 30;
          else 
             skip = 0
-        
-        const product = await ProductModel.find({
-            category: {
-                $regex: `(?i)${category}`
-            }
-        }).skip(skip).limit(30);
+        const product = await ProductModel.find().skip(skip).limit(30);
         res.status(200).send(product)
     } catch (error) {
         res.status(400).send({"msg": error.message})
