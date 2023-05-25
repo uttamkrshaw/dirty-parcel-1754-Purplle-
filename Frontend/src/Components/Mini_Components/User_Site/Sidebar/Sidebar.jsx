@@ -6,23 +6,30 @@ import {
     AccordionIcon,
     Radio, RadioGroup, Box, VStack, Stack
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { getBrandProductData, getCategoryProductData, getProductTypeData, getTagProductData } from '../../../Redux/ProductSection/Action/action';
 export const Sidebar = () => {
+    const dispatch = useDispatch()
     const [category, setCategory] = useState("")
     const [brand, setBrand] = useState("")
     const [tag, setTag] = useState("")
     const [product, setProduct] = useState("")
     const handleCategory = (e) => {
         setCategory(e)
+        dispatch(getCategoryProductData(category))
     }
     const handlebrand = (e) => {
         setBrand(e)
+        dispatch(getBrandProductData(brand))
     }
     const handletag = (e) => {
         setTag(e)
+        dispatch(getTagProductData(tag))
     }
     const handleproduct = (e) => {
         setProduct(e)
+        dispatch(getProductTypeData(product))
     }
     return (
         <>

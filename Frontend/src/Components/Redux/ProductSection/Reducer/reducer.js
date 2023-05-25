@@ -1,4 +1,13 @@
-import {ERROR, GET_PRODUCTS, GET_SINGLE_PRODUCT, LOADING} from "../ActionTypes/actionType"
+import {
+    ERROR,
+    GET_BRAND,
+    GET_CATEGORY,
+    GET_PRODUCTS,
+    GET_PRODUCT_TYPE,
+    GET_SINGLE_PRODUCT,
+    GET_TAG,
+    LOADING
+} from "../ActionTypes/actionType"
 
 const initialState = {
     isLoading: false,
@@ -13,13 +22,41 @@ export const reducer = (state = initialState, {type, payload}) => {
             return {
                 ...state,
                 products: payload,
-                isLoading:false,
-                isError:false
+                isLoading: false,
+                isError: false
             }
         case GET_SINGLE_PRODUCT:
             return {
                 ...state,
                 singleProduct: payload
+            }
+        case GET_CATEGORY:
+            return {
+                ...state,
+                products: payload,
+                isLoading: false,
+                isError: false
+            }
+        case GET_BRAND:
+            return {
+                ...state,
+                products: payload,
+                isLoading: false,
+                isError: false
+            }
+        case GET_TAG:
+            return {
+                ...state,
+                products: payload,
+                isLoading: false,
+                isError: false
+            }
+        case GET_PRODUCT_TYPE:
+            return {
+                ...state,
+                products: payload,
+                isLoading: false,
+                isError: false
             }
         case LOADING:
             return {
