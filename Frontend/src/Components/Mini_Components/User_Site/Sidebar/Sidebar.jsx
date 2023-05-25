@@ -8,8 +8,22 @@ import {
 } from '@chakra-ui/react'
 import { useState } from 'react'
 export const Sidebar = () => {
-    const [value, setValue] = useState("")
-    console.log(value);
+    const [category, setCategory] = useState("")
+    const [brand, setBrand] = useState("")
+    const [tag, setTag] = useState("")
+    const [product, setProduct] = useState("")
+    const handleCategory = (e) => {
+        setCategory(e)
+    }
+    const handlebrand = (e) => {
+        setBrand(e)
+    }
+    const handletag = (e) => {
+        setTag(e)
+    }
+    const handleproduct = (e) => {
+        setProduct(e)
+    }
     return (
         <>
             <Accordion defaultIndex={[0]} allowMultiple>
@@ -23,7 +37,7 @@ export const Sidebar = () => {
                         </AccordionButton>
                     </h2>
                     <AccordionPanel pb={4}>
-                        <RadioGroup onChange={setValue} value={value}>
+                        <RadioGroup onChange={(e) => { handleCategory(e) }} value={category}>
                             <Stack direction={'column'}>
                                 <Radio value='1'>First</Radio>
                                 <Radio value='2'>Second</Radio>
@@ -43,7 +57,7 @@ export const Sidebar = () => {
                         </AccordionButton>
                     </h2>
                     <AccordionPanel pb={4}>
-                        <RadioGroup onChange={setValue} value={value}>
+                        <RadioGroup onChange={(e) => { handleproduct(e) }} value={product}>
                             <Stack direction={'column'}>
                                 <Radio value='Blush'>Blush</Radio>
                                 <Radio value='Bronzer'>Bronzer</Radio>
@@ -69,7 +83,7 @@ export const Sidebar = () => {
                         </AccordionButton>
                     </h2>
                     <AccordionPanel pb={4}>
-                        <RadioGroup onChange={setValue} value={value}>
+                        <RadioGroup onChange={(e) => { handletag(e) }} value={tag}>
                             <Stack direction={'column'}>
                                 <Radio value='Canadian'>Canadian</Radio>
                                 <Radio value='CertClean'>CertClean</Radio>
@@ -111,7 +125,7 @@ export const Sidebar = () => {
                         </AccordionButton>
                     </h2>
                     <AccordionPanel pb={4}>
-                        <RadioGroup onChange={setValue} value={value}>
+                        <RadioGroup onChange={(e) => { handlebrand(e) }} value={brand}>
                             <Stack direction={'column'}>
                                 <Radio value='almay'>almay</Radio>
                                 <Radio value='alva'>alva</Radio>
