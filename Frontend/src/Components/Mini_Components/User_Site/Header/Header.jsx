@@ -31,13 +31,15 @@ import {
 } from '@chakra-ui/icons';
 import { FiChevronDown } from "react-icons/fi"
 import { Link as RouterLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 
 export default function DefaultNavbar() {
     const { isOpen, onToggle } = useDisclosure();
-    let authStatus = JSON.parse(localStorage.getItem("auth")) || false
-
+    let isAuth = useSelector((store) => store.UserReducer.isAuth)
+    const user = useSelector((store)=>store.UserReducer.user)
+    console.log("isAuth",isAuth)
     return (
         <Box>
             <Flex
@@ -82,7 +84,7 @@ export default function DefaultNavbar() {
                     justify={'flex-end'}
                     direction={'row'}
                     spacing={6}>
-                    {authStatus ?
+                    {isAuth ?
                         <>
                             <Menu>
                                 <MenuButton
@@ -98,8 +100,8 @@ export default function DefaultNavbar() {
                                             alignItems="flex-start"
                                             spacing="1px"
                                             ml="2">
-                                            <Text fontSize="xl">
-                                                user
+                                            <Text fontSize="md">
+                                                {user[0].username}
                                             </Text>
                                         </VStack>
                                         <Box display={{ base: 'none', md: 'flex' }}>

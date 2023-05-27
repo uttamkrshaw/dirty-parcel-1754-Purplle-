@@ -2,6 +2,7 @@ import {USER_DETAILS,USER_TOKEN} from "../ActionTypes/actionType"
 
 export const userData = (payload) => {
     localStorage.setItem("user",JSON.stringify(payload))
+    localStorage.setItem("isAuth",JSON.stringify(true))
     return {type: USER_DETAILS, payload}
 }
 
