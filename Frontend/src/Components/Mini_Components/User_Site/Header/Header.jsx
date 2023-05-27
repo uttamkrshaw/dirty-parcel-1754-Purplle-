@@ -32,6 +32,7 @@ import {
 import { FiChevronDown } from "react-icons/fi"
 import { Link as RouterLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import User_details from '../User_details/User_details';
 
 
 
@@ -112,7 +113,9 @@ export default function DefaultNavbar() {
                                 <MenuList
                                     bg={'white'}
                                     borderColor={('white', 'pink.400')}>
-                                    <MenuItem>User Details</MenuItem>
+                                    <MenuItem>
+                                    <User_details />
+                                    </MenuItem>
                                     <MenuDivider />
                                     <MenuItem>Cart</MenuItem>
                                     <MenuDivider />
