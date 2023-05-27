@@ -66,6 +66,7 @@ export const getProductData = (payload) => (dispatch) => {
 
 
 export const getCategoryProductData = (payload) => (dispatch) => { // dispatch(loading())
+    console.log("get category", payload)
     const token = JSON.parse(localStorage.getItem("token"))
     const url = `http://localhost:4500/product/getcat?page=1&category=${payload}`
     axios.get(url, {

@@ -21,7 +21,7 @@ export const Sidebar = ({handleLoad}) => {
     }
     const handlebrand = (e) => {
         setBrand(e)
-        dispatch(getBrandProductData(brand))
+        dispatch(getBrandProductData(category))
     }
     const handletag = (e) => {
         setTag(e)

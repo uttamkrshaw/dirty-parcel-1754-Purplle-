@@ -32,7 +32,7 @@ function Product() {
 
     React.useEffect(() => {
         dispatch(getProductData(page))
-    }, [load])
+    }, [])
 
     return (
         isLoading ?
