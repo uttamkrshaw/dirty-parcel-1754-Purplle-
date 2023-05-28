@@ -8,7 +8,7 @@ import {
   Stack,
   Text,
   useBreakpointValue,
-  useColorModeValue,
+  useColorModeValue,useToast 
 } from '@chakra-ui/react'
 import * as React from 'react'
 import { FavouriteButton } from './FavoutiteButton'
@@ -19,9 +19,10 @@ import { store } from '../../../Redux/store'
 
 export const ProductCard = (props) => {
   const dispatch = useDispatch()
+  const toast = useToast()
   const user = useSelector((store)=>store.UserReducer.user)
   const { product, rootProps } = props
-  const { name, brand, image_link, price, category, product_type, id } = product
+  const { name, brand, image_link, price, category, product_type, _id } = product
   const handleCart = () => {
     const payload = {
       _id:props.product._id,
@@ -34,10 +35,17 @@ export const ProductCard = (props) => {
       user:user[0].username,
       date:new Date().toLocaleString('en-GB', {
         hour12: false,
-      })
+      }),
+      Quantity:1
     }
-    //console.log(payload, "item")
     dispatch(addToCart(payload))
+    toast({
+      title: 'Added To Cart.',
+      position: 'top-right',
+      status: 'success',
+      duration: 2000,
+      isClosable: true,
+  })
   }
   return (
     <Stack
@@ -91,7 +99,7 @@ export const ProductCard = (props) => {
           Add to cart
         </Button>
         <Link
-          to={`/products/${product.id}`}
+          to={`/products/${product._id}`}
           textDecoration="underline"
           fontWeight="lg"
           colour='black'

@@ -14,7 +14,7 @@ function AllRouters(){
                 <Route path="/login" element={<Login />} />
                 <Route path="/signUp" element={<SignUp />} />
                 <Route path="/products" element={<Product />} />
-                <Route path="/products/:products_id" element={<SingleProduct />} />
+                <Route path="/products/:_id" element={<SingleProduct />} />
             </Routes>
         </div>
     )

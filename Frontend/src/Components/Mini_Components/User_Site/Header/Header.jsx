@@ -40,7 +40,6 @@ export default function DefaultNavbar() {
     const { isOpen, onToggle } = useDisclosure();
     let isAuth = useSelector((store) => store.UserReducer.isAuth)
     const user = useSelector((store)=>store.UserReducer.user)
-    console.log("isAuth",isAuth)
     return (
         <Box>
             <Flex

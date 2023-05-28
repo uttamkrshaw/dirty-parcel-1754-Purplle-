@@ -21,32 +21,26 @@ export const error = () => {
     return {type: ERROR}
 }
 
-export const getProducts = (payload) => {
-    //localStorage.setItem("products", JSON.stringify(payload))
+export const getProducts = (payload) => { // localStorage.setItem("products", JSON.stringify(payload))
     return {type: GET_PRODUCTS, payload}
 }
 
-export const getSingleProducts = (payload) => {
-    //localStorage.setItem("singleProduct", JSON.stringify(payload))
+export const getSingleProducts = (payload) => { // localStorage.setItem("singleProduct", JSON.stringify(payload))
     return {type: GET_SINGLE_PRODUCT, payload}
 }
 
-export const getCategoryProducts = (payload) => {
-    //localStorage.setItem("products", JSON.stringify(payload))
+export const getCategoryProducts = (payload) => { // localStorage.setItem("products", JSON.stringify(payload))
     return {type: GET_CATEGORY, payload}
 }
 
-export const getBrandProducts = (payload) => {
-    //localStorage.setItem("products", JSON.stringify(payload))
+export const getBrandProducts = (payload) => { // localStorage.setItem("products", JSON.stringify(payload))
     return {type: GET_BRAND, payload}
 }
-export const getTagProducts = (payload) => {
-    //localStorage.setItem("products", JSON.stringify(payload))
+export const getTagProducts = (payload) => { // localStorage.setItem("products", JSON.stringify(payload))
     return {type: GET_TAG, payload}
 }
 
-export const getProductType = (payload) => {
-    //localStorage.setItem("products", JSON.stringify(payload))
+export const getProductType = (payload) => { // localStorage.setItem("products", JSON.stringify(payload))
     return {type: GET_PRODUCT_TYPE, payload}
 }
 
@@ -106,4 +100,16 @@ export const getProductTypeData = (payload) => (dispatch) => { // dispatch(loadi
             'Authorization': `bearer ${token}`
         }
     }).then((res) => dispatch(getProductType(res.data))).catch((err) => dispatch(error()))
+}
+
+
+export const getSingleProductData = (payload) => (dispatch) => {
+    dispatch(loading())
+    const token = JSON.parse(localStorage.getItem("token"))
+    const url = `http://localhost:4500/product/get/${payload}`
+    axios.get(url, {
+        'headers': {
+            'Authorization': `bearer ${token}`
+        }
+    }).then((res) => dispatch(getSingleProducts(res.data))).catch((err) => dispatch(error()))
 }

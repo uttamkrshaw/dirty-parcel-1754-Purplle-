@@ -30,7 +30,9 @@ export const reducer = (state = initialState, {type, payload}) => {
         case GET_SINGLE_PRODUCT:
             return {
                 ...state,
-                singleProduct: payload
+                singleProduct: payload,
+                isLoading:false,
+                isError:false
             }
         case GET_CATEGORY:
             return {
