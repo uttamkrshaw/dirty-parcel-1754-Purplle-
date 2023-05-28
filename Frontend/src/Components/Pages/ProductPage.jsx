@@ -20,7 +20,6 @@ import { Sidebar } from "../Mini_Components/User_Site/Sidebar/Sidebar";
 function Product() {
 
     const dispatch = useDispatch()
-    const token = useSelector((store) => store.UserReducer.token)
     const { products, isLoading, isError } = useSelector((store) => store.ProductReducer)
     const [page, setPage] = useState(1)
     const [load, setLoad] = useState(false)
