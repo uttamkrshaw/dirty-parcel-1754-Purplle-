@@ -2,6 +2,8 @@ import { CloseButton, Flex, Link, Select, useColorModeValue } from '@chakra-ui/r
 import * as React from 'react'
 import { PriceTag } from './PriceTag'
 import { CartProductMeta } from './CartProductMeta'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteItem, quantityChange } from '../../../Redux/OrderSection/Action/action'
 const QuantitySelect = (props) => {
   return (
     <Select
@@ -19,17 +21,29 @@ const QuantitySelect = (props) => {
 }
 
 export const CartItem = (props) => {
+  const dispatch = useDispatch()
+  const cart = useSelector((store) => store.OrderReducer.cart)
   const {
     isGiftWrapping,
     name,
     description,
-    quantity,
+    Quantity,
     imageUrl,
     currency,
     price,
-    onChangeQuantity,
-    onClickDelete,
+    image_link, brand, _id
   } = props
+  const onChangeQuantity = (e) => {
+    const payload = {
+      _id: _id,
+      value: e
+    }
+    dispatch(quantityChange(payload))
+  }
+  const onClickDelete = () => {
+    let data = cart.filter((e) => e._id !== _id)
+    dispatch(deleteItem(data))
+  }
   return (
     <Flex
       direction={{
@@ -41,8 +55,8 @@ export const CartItem = (props) => {
     >
       <CartProductMeta
         name={name}
-        description={description}
-        image={imageUrl}
+        brand={brand}
+        image={image_link}
         isGiftWrapping={isGiftWrapping}
       />
 
@@ -56,7 +70,7 @@ export const CartItem = (props) => {
         }}
       >
         <QuantitySelect
-          value={quantity}
+          value={Quantity}
           onChange={(e) => {
             onChangeQuantity?.(+e.currentTarget.value)
           }}
@@ -80,7 +94,7 @@ export const CartItem = (props) => {
           Delete
         </Link>
         <QuantitySelect
-          value={quantity}
+          value={Quantity}
           onChange={(e) => {
             onChangeQuantity?.(+e.currentTarget.value)
           }}

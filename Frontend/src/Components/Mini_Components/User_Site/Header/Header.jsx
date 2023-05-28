@@ -39,7 +39,7 @@ import User_details from '../User_details/User_details';
 export default function DefaultNavbar() {
     const { isOpen, onToggle } = useDisclosure();
     let isAuth = useSelector((store) => store.UserReducer.isAuth)
-    const user = useSelector((store)=>store.UserReducer.user)
+    const user = useSelector((store) => store.UserReducer.user)
     return (
         <Box>
             <Flex
@@ -113,10 +113,10 @@ export default function DefaultNavbar() {
                                     bg={'white'}
                                     borderColor={('white', 'pink.400')}>
                                     <MenuItem>
-                                    <User_details />
+                                        <User_details />
                                     </MenuItem>
                                     <MenuDivider />
-                                    <MenuItem>Cart</MenuItem>
+                                    <RouterLink to="/cart"><MenuItem>Cart</MenuItem></RouterLink>
                                     <MenuDivider />
                                     <MenuItem>Admin Panel</MenuItem>
                                     <MenuDivider />
