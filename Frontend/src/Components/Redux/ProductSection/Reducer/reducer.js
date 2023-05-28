@@ -12,8 +12,10 @@ import {
 const initialState = {
     isLoading: false,
     isError: false,
-    products: JSON.parse(localStorage.getItem("products")) || [],
-    singleProduct: JSON.parse(localStorage.getItem("singleProduct")) || []
+    // products: JSON.parse(localStorage.getItem("products")) || [],
+    // singleProduct: JSON.parse(localStorage.getItem("singleProduct")) || []
+    products: [],
+    singleProduct: []
 }
 
 export const reducer = (state = initialState, {type, payload}) => {

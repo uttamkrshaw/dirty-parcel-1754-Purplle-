@@ -22,31 +22,31 @@ export const error = () => {
 }
 
 export const getProducts = (payload) => {
-    localStorage.setItem("products", JSON.stringify(payload))
+    //localStorage.setItem("products", JSON.stringify(payload))
     return {type: GET_PRODUCTS, payload}
 }
 
 export const getSingleProducts = (payload) => {
-    localStorage.setItem("singleProduct", JSON.stringify(payload))
+    //localStorage.setItem("singleProduct", JSON.stringify(payload))
     return {type: GET_SINGLE_PRODUCT, payload}
 }
 
 export const getCategoryProducts = (payload) => {
-    localStorage.setItem("products", JSON.stringify(payload))
+    //localStorage.setItem("products", JSON.stringify(payload))
     return {type: GET_CATEGORY, payload}
 }
 
 export const getBrandProducts = (payload) => {
-    localStorage.setItem("products", JSON.stringify(payload))
+    //localStorage.setItem("products", JSON.stringify(payload))
     return {type: GET_BRAND, payload}
 }
 export const getTagProducts = (payload) => {
-    localStorage.setItem("products", JSON.stringify(payload))
+    //localStorage.setItem("products", JSON.stringify(payload))
     return {type: GET_TAG, payload}
 }
 
 export const getProductType = (payload) => {
-    localStorage.setItem("products", JSON.stringify(payload))
+    //localStorage.setItem("products", JSON.stringify(payload))
     return {type: GET_PRODUCT_TYPE, payload}
 }
 
@@ -66,7 +66,6 @@ export const getProductData = (payload) => (dispatch) => {
 
 
 export const getCategoryProductData = (payload) => (dispatch) => { // dispatch(loading())
-    console.log("get category", payload)
     const token = JSON.parse(localStorage.getItem("token"))
     const url = `http://localhost:4500/product/getcat?page=1&category=${payload}`
     axios.get(url, {

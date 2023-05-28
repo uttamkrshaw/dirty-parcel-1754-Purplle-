@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom"
 import {
-    Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, ButtonGroup, Button, Box, Skeleton, SkeletonCircle, SkeletonText, Alert,
+    Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, Center, ButtonGroup, Button, Box, Skeleton, SkeletonCircle, SkeletonText, Alert,
     AlertIcon,
     AlertTitle,
     AlertDescription, StackDivider
@@ -14,7 +14,7 @@ import { ProductGrid } from "../Mini_Components/User_Site/ProductPageComponents/
 import { useDispatch, useSelector } from "react-redux"
 import { getProductData } from "../Redux/ProductSection/Action/action";
 import { store } from "../Redux/store";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Sidebar } from "../Mini_Components/User_Site/Sidebar/Sidebar";
 
 function Product() {
@@ -22,17 +22,16 @@ function Product() {
     const dispatch = useDispatch()
     const token = useSelector((store) => store.UserReducer.token)
     const { products, isLoading, isError } = useSelector((store) => store.ProductReducer)
-    const [product, setProduct] = useState(products)
-    const [page, setPage] = useState(10)
-    const [load,setLoad] = useState(false)
+    const [page, setPage] = useState(1)
+    const [load, setLoad] = useState(false)
 
-    const handleLoad = () =>{
+    const handleLoad = () => {
         setLoad(!load)
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         dispatch(getProductData(page))
-    }, [])
+    }, [page])
 
     return (
         isLoading ?
@@ -52,7 +51,7 @@ function Product() {
                     </div>
                     <div>
                         <Stack direction={['column', 'row']} spacing='24px' divider={<StackDivider borderColor='gray.200' />}>
-                            <Sidebar />
+
                             <Box >
                                 <Box
                                     maxW="7xl"
@@ -69,7 +68,7 @@ function Product() {
                                     }}
                                 >
                                     <ProductGrid>
-                                        {product.map((product) => (
+                                        {products.map((product) => (
                                             <ProductCard key={product.id} product={product} />
                                         ))}
                                     </ProductGrid>
@@ -77,6 +76,13 @@ function Product() {
                             </Box>
                         </Stack>
                     </div>
+                    <div>
+                        <Center>
+                            <Button onClick={() => setPage(page - 1)}>PREV</Button>
+                            <Button disabled>{page}</Button>
+                            <Button onClick={() => setPage(page + 1)}>NEXT</Button>
+                        </Center>
+                    </div >
                 </>
     )
 }
