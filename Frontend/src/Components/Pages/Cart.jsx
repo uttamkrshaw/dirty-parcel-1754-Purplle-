@@ -71,7 +71,7 @@ export const CartPage = () => {
           <CartOrderSummary />
           <HStack mt="6" fontWeight="semibold">
             <p>or</p>
-            <Link color={mode('blue.500', 'blue.200')}>Continue shopping</Link>
+            <Link color={mode('pink.500', 'pink.200')}>Continue shopping</Link>
           </HStack>
         </Flex>
       </Stack>

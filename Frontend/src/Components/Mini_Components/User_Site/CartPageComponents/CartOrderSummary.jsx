@@ -59,7 +59,7 @@ export const CartOrderSummary = () => {
           </Text>
         </Flex>
       </Stack>
-      <Button colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
+      <Button colorScheme="pink" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
         Checkout
       </Button>
     </Stack>
