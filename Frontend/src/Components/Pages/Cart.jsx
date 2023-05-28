@@ -10,12 +10,15 @@ import {
 import { useSelector } from 'react-redux'
 import { CartOrderSummary } from '../Mini_Components/User_Site/CartPageComponents/CartOrderSummary'
 import { CartItem } from '../Mini_Components/User_Site/CartPageComponents/CartItem'
+import DefaultNavbar from '../Mini_Components/User_Site/Header/Header'
+import DefaultFooter from '../Mini_Components/User_Site/Footer/Footer'
 
 
-export  const CartPage = () => {
+export const CartPage = () => {
   const cart = useSelector((store) => store.OrderReducer.cart)
-  localStorage.setItem("cart",JSON.stringify(cart))
-  return (
+  localStorage.setItem("cart", JSON.stringify(cart))
+  return <>
+    <DefaultNavbar />
     <Box
       maxW={{
         base: '3xl',
@@ -73,5 +76,6 @@ export  const CartPage = () => {
         </Flex>
       </Stack>
     </Box>
-  )
+    <DefaultFooter />
+  </>
 }
