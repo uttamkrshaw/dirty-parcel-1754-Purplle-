@@ -1,9 +1,9 @@
 import {
+  Text,
   Box,
   Flex,
   Heading,
   HStack,
-  Link,
   Stack,
   useColorModeValue as mode,
 } from '@chakra-ui/react'
@@ -12,7 +12,7 @@ import { CartOrderSummary } from '../Mini_Components/User_Site/CartPageComponent
 import { CartItem } from '../Mini_Components/User_Site/CartPageComponents/CartItem'
 import DefaultNavbar from '../Mini_Components/User_Site/Header/Header'
 import DefaultFooter from '../Mini_Components/User_Site/Footer/Footer'
-
+import { Link } from 'react-router-dom'
 
 export const CartPage = () => {
   const cart = useSelector((store) => store.OrderReducer.cart)
@@ -71,7 +71,11 @@ export const CartPage = () => {
           <CartOrderSummary />
           <HStack mt="6" fontWeight="semibold">
             <p>or</p>
-            <Link color={mode('pink.500', 'pink.200')}>Continue shopping</Link>
+            <Link to={"/products"} >
+              <Text color={mode('pink.500', 'pink.200')}>
+                Continue shopping
+              </Text>
+            </Link>
           </HStack>
         </Flex>
       </Stack>

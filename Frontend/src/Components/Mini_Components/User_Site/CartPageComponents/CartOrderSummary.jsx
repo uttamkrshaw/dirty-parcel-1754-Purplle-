@@ -11,6 +11,7 @@ import { FaArrowRight } from 'react-icons/fa'
 import { formatPrice } from './PriceTag'
 import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
+import {useNavigate} from "react-router-dom"
 const OrderSummaryItem = (props) => {
   const { label, value, children } = props
   return (
@@ -26,6 +27,7 @@ const OrderSummaryItem = (props) => {
 export const CartOrderSummary = () => {
   const cart = useSelector((store) => store.OrderReducer.cart)
   const [total, setTotal] = useState(0)
+  const navigate = useNavigate()
   const calTotal = () => {
     let sum = 0;
     cart.map((el) => { sum = sum + (el.price * el.Quantity) })
@@ -59,7 +61,7 @@ export const CartOrderSummary = () => {
           </Text>
         </Flex>
       </Stack>
-      <Button colorScheme="pink" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
+      <Button onClick={()=>{navigate("/checkout")}} colorScheme="pink" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
         Checkout
       </Button>
     </Stack>

@@ -11,7 +11,6 @@ import {
 } from '@chakra-ui/react'
 import * as React from 'react'
 import { HiOutlineChat, HiOutlineMail, HiOutlinePhone } from 'react-icons/hi'
-import { products } from './_data'
 import { ProductItem } from './ProductItem'
 import { useSelector } from "react-redux"
 
