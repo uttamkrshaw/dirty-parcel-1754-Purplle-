@@ -17,6 +17,15 @@ import { useSelector } from "react-redux"
 
 export const OrderSummary = () => {
   const cart = useSelector((store) => store.OrderReducer.cart)
+  const [total, setTotal] = React.useState(0)
+  const calTotal = () => {
+    let sum = 0;
+    cart.map((el) => { sum = sum + (el.price * el.Quantity) })
+    setTotal(sum)
+  }
+  React.useEffect(() => {
+    calTotal()
+  })
   return (
     <Stack
       spacing={{
@@ -41,6 +50,8 @@ export const OrderSummary = () => {
           ))}
         </Stack>
 
+        {/*
+        Discount  Copoun
         <HStack spacing="6">
           <Input
             name="discount"
@@ -63,20 +74,20 @@ export const OrderSummary = () => {
           >
             Apply
           </Button>
-        </HStack>
+        </HStack> */}
         <Stack spacing="6">
           <Stack spacing="3">
             <Stack direction="row" justify="space-between">
               <Text color={useColorModeValue('gray.600', 'gray.300')}>Subtotal</Text>
-              <Text color={useColorModeValue('black', 'white')}>$597.00</Text>
+              <Text color={useColorModeValue('black', 'white')}>${total}</Text>
             </Stack>
             <Stack direction="row" justify="space-between">
               <Text color={useColorModeValue('gray.600', 'gray.300')}>Shipping cost</Text>
-              <Text color={useColorModeValue('black', 'white')}>+$24.99</Text>
+              <Text color={useColorModeValue('black', 'white')}>+$10</Text>
             </Stack>
             <Stack direction="row" justify="space-between">
-              <Text color={useColorModeValue('gray.600', 'gray.300')}>Discount (20%)</Text>
-              <Text color={useColorModeValue('blue.500', 'blue.200')}>-$20.00</Text>
+              <Text color={useColorModeValue('gray.600', 'gray.300')}>Discount (10%)</Text>
+              <Text color={useColorModeValue('blue.500', 'blue.200')}>-${(total * 0.1)}</Text>
             </Stack>
           </Stack>
           <Divider />
@@ -89,22 +100,22 @@ export const OrderSummary = () => {
               Order Total
             </Text>
             <Text fontSize="xl" fontWeight="semibold" color={useColorModeValue('black', 'white')}>
-              $597.00
+              ${total + 10 - (total * 0.1)}
             </Text>
           </Stack>
         </Stack>
       </Stack>
       <Stack spacing="8">
-        <Button colorScheme="blue" size="lg" py="7">
+        <Button colorScheme="pink" size="lg" py="7">
           Place Order
         </Button>
         <Stack spacing="3">
-          <Text fontSize="sm" color={useColorModeValue('gray.700', 'gray.200')}>
+          <Text fontSize="sm" color={useColorModeValue('pink.700', 'gray.200')}>
             Have questions? or Need help to complete your order?
           </Text>
           <HStack
             spacing="8"
-            color={useColorModeValue('blue.500', 'blue.200')}
+            color={useColorModeValue('pink.500', 'blue.200')}
             fontWeight="semibold"
           >
             <HStack>
