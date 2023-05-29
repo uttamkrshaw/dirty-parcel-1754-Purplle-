@@ -13,7 +13,6 @@ import { useSelector } from "react-redux"
 function User_details() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const user = useSelector((store) => store.UserReducer.user)
-    console.log("user", user);
     return (
         <>
             <Button variant="link" color="pink.400" onClick={onOpen}>User Details</Button>

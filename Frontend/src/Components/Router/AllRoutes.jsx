@@ -5,7 +5,8 @@ import Login from "../Pages/Login";
 import SignUp from "../Pages/Sign-Up";
 import SingleProduct from "../Pages/SingleProductPage";
 import Product from "../Pages/ProductPage";
-import {CartPage} from "../Pages/Cart";
+import { CartPage } from "../Pages/Cart";
+import { Checkout } from "../Pages/Checkout";
 
 function AllRouters() {
     return (
@@ -17,6 +18,7 @@ function AllRouters() {
                 <Route path="/products" element={<Product />} />
                 <Route path="/products/:_id" element={<SingleProduct />} />
                 <Route path="/cart" element={<CartPage />} />
+                <Route path="/checkout" element={<Checkout />} />
             </Routes>
         </div>
     )
