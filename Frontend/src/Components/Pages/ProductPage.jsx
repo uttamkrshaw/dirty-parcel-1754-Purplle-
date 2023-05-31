@@ -48,9 +48,10 @@ function Product() {
                     <div>
                         <DefaultNavbar handleLoad={handleLoad} />
                     </div>
+
                     <div>
                         <Stack direction={['column', 'row']} spacing='24px' divider={<StackDivider borderColor='gray.200' />}>
-
+                            <Sidebar handleLoad={handleLoad} />
                             <Box >
                                 <Box
                                     maxW="7xl"

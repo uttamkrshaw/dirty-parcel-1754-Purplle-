@@ -9,28 +9,45 @@ import {
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { getBrandProductData, getCategoryProductData, getProductTypeData, getTagProductData } from '../../../Redux/ProductSection/Action/action';
-export const Sidebar = ({handleLoad}) => {
+import { useEffect } from 'react';
+export const Sidebar = ({ handleLoad }) => {
     const dispatch = useDispatch()
-    const [category, setCategory] = useState("")
-    const [brand, setBrand] = useState("")
-    const [tag, setTag] = useState("")
-    const [product, setProduct] = useState("")
+    const [category, setCategory] = useState(JSON.parse(localStorage.getItem("category")) || "")
+    const [brand, setBrand] = useState(JSON.parse(localStorage.getItem("brand")) || "")
+    const [tag, setTag] = useState(JSON.parse(localStorage.getItem("tag")) || "")
+    const [product, setProduct] = useState(JSON.parse(localStorage.getItem("product")) || "")
     const handleCategory = (e) => {
         setCategory(e)
+        localStorage.setItem("category", JSON.stringify(category))
         dispatch(getCategoryProductData(category))
     }
     const handlebrand = (e) => {
         setBrand(e)
+        localStorage.setItem("brand", JSON.stringify(brand))
         dispatch(getBrandProductData(category))
     }
     const handletag = (e) => {
         setTag(e)
+        localStorage.setItem("tag", JSON.stringify(tag))
+
         dispatch(getTagProductData(tag))
     }
     const handleproduct = (e) => {
         setProduct(e)
+        localStorage.setItem("product", JSON.stringify(product))
         dispatch(getProductTypeData(product))
     }
+    useEffect(() => {
+        if (category != "") {
+            dispatch(getCategoryProductData(category))
+        } else if (brand != "") {
+            dispatch(getBrandProductData(category))
+        } else if (tag !== "") {
+            dispatch(getTagProductData(tag))
+        } else if (product != "") {
+            dispatch(getProductTypeData(product))
+        }
+    }, [category, brand, tag, product])
     return (
         <>
             <Accordion defaultIndex={[0]} allowMultiple>
@@ -46,6 +63,7 @@ export const Sidebar = ({handleLoad}) => {
                     <AccordionPanel pb={4}>
                         <RadioGroup onChange={(e) => { handleCategory(e) }} value={category}>
                             <Stack direction={'column'}>
+                            <Radio value=''>Choose Product Category</Radio>
                                 <Radio value='liquid'>liquid</Radio>
                                 <Radio value='2'>Second</Radio>
                                 <Radio value='3'>Third</Radio>
@@ -66,6 +84,7 @@ export const Sidebar = ({handleLoad}) => {
                     <AccordionPanel pb={4}>
                         <RadioGroup onChange={(e) => { handleproduct(e) }} value={product}>
                             <Stack direction={'column'}>
+                                <Radio value=''>Choose Product Type</Radio>
                                 <Radio value='Blush'>Blush</Radio>
                                 <Radio value='Bronzer'>Bronzer</Radio>
                                 <Radio value='Eyebrow'>Eyebrow</Radio>
@@ -92,6 +111,7 @@ export const Sidebar = ({handleLoad}) => {
                     <AccordionPanel pb={4}>
                         <RadioGroup onChange={(e) => { handletag(e) }} value={tag}>
                             <Stack direction={'column'}>
+                                <Radio value=''>Choose Product Tag</Radio>
                                 <Radio value='Canadian'>Canadian</Radio>
                                 <Radio value='CertClean'>CertClean</Radio>
                                 <Radio value='Chemical Free'>
@@ -134,6 +154,7 @@ export const Sidebar = ({handleLoad}) => {
                     <AccordionPanel pb={4}>
                         <RadioGroup onChange={(e) => { handlebrand(e) }} value={brand}>
                             <Stack direction={'column'}>
+                                <Radio value=''>Choose Product Brand</Radio>
                                 <Radio value='almay'>almay</Radio>
                                 <Radio value='alva'>alva</Radio>
                                 <Radio value='anna sui'>anna sui</Radio>

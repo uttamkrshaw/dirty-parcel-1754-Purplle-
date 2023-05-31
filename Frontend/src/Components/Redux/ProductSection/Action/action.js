@@ -103,6 +103,7 @@ export const getProductTypeData = (payload) => (dispatch) => { // dispatch(loadi
 }
 
 
+
 export const getSingleProductData = (payload) => (dispatch) => {
     dispatch(loading())
     const token = JSON.parse(localStorage.getItem("token"))
