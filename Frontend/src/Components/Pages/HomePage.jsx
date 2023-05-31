@@ -22,7 +22,7 @@ function HomePage(){
         <Part5 />
         <Part6 />
         <Part7 />
-        <Part8 />
+        <Part8 /> 
         <Part9 />
         <Part10 />
         <DefaultFooter />
