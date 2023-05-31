@@ -20,7 +20,7 @@ export const ProductCard = (props) => {
     const dispatch = useDispatch()
     const toast = useToast()
     const user = useSelector((store) => store.UserReducer.user)
-    const { name, brand, image_link, price, category, product_type, _id } = props
+    const { name, brand, image_link, price, category, product_type, _id,product_colors } = props
     const handleCart = () => {
         const payload = {
             _id,
@@ -53,9 +53,10 @@ export const ProductCard = (props) => {
                 base: '4',
                 md: '5',
             })}
+            p={4}
         >
             <Box position="relative">
-                <AspectRatio ratio={4 / 3}>
+                <AspectRatio ratio={2 / 1}>
                     <Image
                         src={image_link}
                         alt={name}
@@ -63,7 +64,7 @@ export const ProductCard = (props) => {
                         fallback={<Skeleton />}
                         borderRadius={useBreakpointValue({
                             base: 'md',
-                            md: 'xl',
+                            md: 'md',
                         })}
                     />
                 </AspectRatio>
@@ -98,7 +99,7 @@ export const ProductCard = (props) => {
                     Add to cart
                 </Button>
                 <Link
-                    to={`/products/${_id}`}
+                    to={`/products/${_id.$oid}`}
                     textDecoration="underline"
                     fontWeight="lg"
                     colour='black'

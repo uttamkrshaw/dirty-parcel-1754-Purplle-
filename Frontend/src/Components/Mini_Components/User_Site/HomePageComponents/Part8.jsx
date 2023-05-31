@@ -410,7 +410,7 @@ const product = productData.map(item => (
 function Part8() {
     return (
         <>
-            <Grid gap={4} maxW='6xl' margin="auto" marginTop="20px">
+            <Grid maxW='6xl' margin="auto" marginTop="20px">
                 <Carousel responsive={responsive} draggable={true} infinite={true} autoPlay={true} autoPlaySpeed={2000}>
                     {product}
                 </Carousel>
