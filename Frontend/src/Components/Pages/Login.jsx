@@ -13,12 +13,16 @@ import {
     useBreakpointValue,
     IconProps,
     Icon,
+    FormControl,
+    FormLabel,
+    InputGroup,
+    InputRightElement
 } from '@chakra-ui/react';
 import {
     useToast
 } from "@chakra-ui/react";
 
-import { useDispatch, useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 import { useState } from 'react';
 
@@ -60,11 +64,11 @@ export default function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const user = useSelector((store)=>store.UserReducer.user)
-    console.log("user",user)
-    //for loginto our account
+    const user = useSelector((store) => store.UserReducer.user)
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [show, setShow] = useState(false);
+    const handleClick = () => setShow(!show);
     const toast = useToast();
     const handleLogin = () => {
         const payload = {
@@ -200,28 +204,32 @@ export default function Login() {
                     </Stack>
                     <Box as={'form'} mt={10}>
                         <Stack spacing={4}>
-                            <Input
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                placeholder="Enter Username For Login"
-                                bg={'gray.100'}
-                                border={0}
-                                color={'gray.500'}
-                                _placeholder={{
-                                    color: 'gray.500',
-                                }}
-                            />
-                            <Input
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                placeholder="Enter Password For Login"
-                                bg={'gray.100'}
-                                border={0}
-                                color={'gray.500'}
-                                _placeholder={{
-                                    color: 'gray.500',
-                                }}
-                            />
+                            <FormControl mt="2%">
+                                <FormLabel htmlFor="username" fontWeight={'normal'}>
+                                    User Name
+                                </FormLabel>
+                                <Input id="email" type="text" value={username} onChange={(e) => { setUsername(e.target.value) }} />
+                            </FormControl>
+
+                            <FormControl>
+                                <FormLabel htmlFor="password" fontWeight={'normal'} mt="2%">
+                                    Password
+                                </FormLabel>
+                                <InputGroup size="md">
+                                    <Input
+                                        pr="4.5rem"
+                                        type={show ? 'text' : 'password'}
+                                        placeholder="Enter password"
+                                        value={password} onChange={(e) => { setPassword(e.target.value) }}
+                                    />
+                                    <InputRightElement width="4.5rem">
+                                        <Button h="1.75rem" size="sm" onClick={handleClick}>
+                                            {show ? 'Hide' : 'Show'}
+                                        </Button>
+                                    </InputRightElement>
+                                </InputGroup>
+                            </FormControl>
+
                         </Stack>
                         <Button
                             onClick={handleLogin}

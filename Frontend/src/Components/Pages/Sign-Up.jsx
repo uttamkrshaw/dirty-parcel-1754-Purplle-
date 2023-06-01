@@ -115,7 +115,7 @@ const Form2 = ({ name, setName, mobile, setMobile, pin, setPin, address, setAddr
           <FormLabel htmlFor="user-name" fontWeight={'normal'}>
             Name
           </FormLabel>
-          <Input id="user-name" placeholder="Name" value={name} onChange={(e) => { setName(e.target.value) }}  />
+          <Input id="user-name" placeholder="Name" value={name} onChange={(e) => { setName(e.target.value) }} />
         </FormControl>
 
         <FormControl>
@@ -123,7 +123,7 @@ const Form2 = ({ name, setName, mobile, setMobile, pin, setPin, address, setAddr
             10-digit Mobile Number
           </FormLabel>
           <Input id="age" placeholder="Mobile Number" value={mobile} onChange={(e) => { setMobile(e.target.value) }}
- />
+          />
         </FormControl>
       </Flex>
 
@@ -205,7 +205,7 @@ const Form2 = ({ name, setName, mobile, setMobile, pin, setPin, address, setAddr
           w="full"
           rounded="md"
           value={type} onChange={(e) => { setType(e.target.value) }}
-          >
+        >
           <option value="Home">Home</option>
           <option value="Work">Work</option>
         </Select>
@@ -257,8 +257,8 @@ const Form2 = ({ name, setName, mobile, setMobile, pin, setPin, address, setAddr
           size="sm"
           w="full"
           rounded="md"
-          value={state} onChange={(e) => {setState(e.target.value) }}
-          >
+          value={state} onChange={(e) => { setState(e.target.value) }}
+        >
           <option value="">Select State</option>
           <option value='Andhra Pradesh'>Andhra Pradesh </option>
           <option value='Arunachal Pradesh'>Arunachal Pradesh</option>
@@ -321,13 +321,13 @@ export default function SignUp() {
       username,
       age,
       location: {
-        Name:name,
+        Name: name,
         Mobile_No: mobile,
         Pin_Code: pin,
         Address: address,
         District: district,
         State: state,
-        Address_Type:type,
+        Address_Type: type,
       },
       type: "USER",
       order: {
@@ -361,7 +361,6 @@ export default function SignUp() {
       });
   };
 
-  // SignIn with Google
   return (
     <Box position={"relative"}>
       <Container
@@ -483,6 +482,7 @@ export default function SignUp() {
                 value={progress}
                 mb="5%"
                 mx="5%"
+                colorScheme='pink'
                 isAnimated></Progress>
               {step === 1 ? <Form1 username={username} setUsername={setUsername} age={age} setAge={setAge} email={email} setEmail={setEmail} password={password} setPassword={setPassword} /> :
                 <Form2 name={name} setName={setName}
@@ -501,7 +501,7 @@ export default function SignUp() {
                         setProgress(progress - 50);
                       }}
                       isDisabled={step === 1}
-                      colorScheme="teal"
+                      colorScheme="pink"
                       variant="solid"
                       w="7rem"
                       mr="5%">
@@ -518,7 +518,7 @@ export default function SignUp() {
                           setProgress(progress + 50);
                         }
                       }}
-                      colorScheme="teal"
+                      colorScheme="pink"
                       variant="outline">
                       Next
                     </Button>
@@ -528,8 +528,8 @@ export default function SignUp() {
                       w="7rem"
                       colorScheme="red"
                       variant="solid"
-                      onClick={()=>{handleSubmit()}}
-                      >
+                      onClick={() => { handleSubmit() }}
+                    >
                       Submit
                     </Button>
                   ) : null}
@@ -587,14 +587,3 @@ export const Blur = (props: IconProps) => {
     </Icon>
   );
 };
-
-
-// onClick={() => {
-//   toast({
-//     title: 'Account created.',
-//     description: "We've created your account for you.",
-//     status: 'success',
-//     duration: 3000,
-//     isClosable: true,
-//   });
-// }}
