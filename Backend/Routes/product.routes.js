@@ -28,18 +28,12 @@ productRouter.get("/getall", auth, async (req, res) => {
 
 productRouter.get("/getcat", auth, async (req, res) => {
     try {
-        const {page, category} = req.query
-        let skip
-        if (page) 
-            skip = (page - 1) * 30;
-         else 
-            skip = 0
-
+        const {category} = req.query
         const product = await ProductModel.find({
             category: {
                 $regex: `(?i)${category}`
             }
-        }).skip(skip).limit(30);
+        })
         res.status(200).send(product)
     } catch (error) {
         res.status(400).send({"msg": error.message})
@@ -51,18 +45,12 @@ productRouter.get("/getcat", auth, async (req, res) => {
 
 productRouter.get("/gettype", auth, async (req, res) => {
     try {
-        const {page, type} = req.query
-        let skip
-        if (page) 
-            skip = (page - 1) * 30;
-         else 
-            skip = 0
-
+        const { type} = req.query
         const product = await ProductModel.find({
             product_type: {
                 $regex: `(?i)${type}`
             }
-        }).skip(skip).limit(30);
+        })
         res.status(200).send(product)
     } catch (error) {
         res.status(400).send({"msg": error.message})
@@ -74,18 +62,12 @@ productRouter.get("/gettype", auth, async (req, res) => {
 
 productRouter.get("/gettag", auth, async (req, res) => {
     try {
-        const {page, tag} = req.query
-        let skip
-        if (page) 
-            skip = (page - 1) * 30;
-         else 
-            skip = 0
-
+        const { tag} = req.query
         const product = await ProductModel.find({
             tag_list: {
                 $regex: `(?i)${tag}`
             }
-        }).skip(skip).limit(30);
+        })
         res.status(200).send(product)
     } catch (error) {
         res.status(400).send({"msg": error.message})
@@ -97,18 +79,12 @@ productRouter.get("/gettag", auth, async (req, res) => {
 
 productRouter.get("/getbrand", auth, async (req, res) => {
     try {
-        const {page, brand} = req.query
-        let skip
-        if (page) 
-            skip = (page - 1) * 30;
-         else 
-            skip = 0
-
+        const {brand} = req.query
         const product = await ProductModel.find({
             brand: {
                 $regex: `(?i)${brand}`
             }
-        }).skip(skip).limit(30);
+        })
         res.status(200).send(product)
     } catch (error) {
         res.status(400).send({"msg": error.message})

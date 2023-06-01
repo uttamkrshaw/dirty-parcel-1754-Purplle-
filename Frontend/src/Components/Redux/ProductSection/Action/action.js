@@ -98,7 +98,7 @@ export const getProductData = (payload) => (dispatch) => {
 
 export const getCategoryProductData = (payload) => (dispatch) => { // dispatch(loading())
     const token = JSON.parse(localStorage.getItem("token"))
-    const url = `http://localhost:4500/product/getcat?page=1&category=${payload}`
+    const url = `http://localhost:4500/product/getcat?category=${payload}`
     axios.get(url, {
         'headers': {
             'Authorization': `bearer ${token}`
@@ -109,7 +109,7 @@ export const getCategoryProductData = (payload) => (dispatch) => { // dispatch(l
 
 export const getBrandProductData = (payload) => (dispatch) => { // dispatch(loading())
     const token = JSON.parse(localStorage.getItem("token"))
-    const url = `http://localhost:4500/product/getbrand?page=1&brand=${payload}`
+    const url = `http://localhost:4500/product/getbrand?brand=${payload}`
     axios.get(url, {
         'headers': {
             'Authorization': `bearer ${token}`
@@ -120,7 +120,7 @@ export const getBrandProductData = (payload) => (dispatch) => { // dispatch(load
 
 export const getTagProductData = (payload) => (dispatch) => { // dispatch(loading())
     const token = JSON.parse(localStorage.getItem("token"))
-    const url = `http://localhost:4500/product/gettag?page=1&tag=${payload}`
+    const url = `http://localhost:4500/product/gettag?tag=${payload}`
     axios.get(url, {
         'headers': {
             'Authorization': `bearer ${token}`
@@ -131,7 +131,7 @@ export const getTagProductData = (payload) => (dispatch) => { // dispatch(loadin
 
 export const getProductTypeData = (payload) => (dispatch) => { // dispatch(loading())
     const token = JSON.parse(localStorage.getItem("token"))
-    const url = `http://localhost:4500/product/gettype?page=1&type=${payload}`
+    const url = `http://localhost:4500/product/gettype?type=${payload}`
     axios.get(url, {
         'headers': {
             'Authorization': `bearer ${token}`
