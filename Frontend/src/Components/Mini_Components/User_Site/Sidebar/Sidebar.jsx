@@ -13,11 +13,6 @@ import { useEffect } from 'react';
 import { store } from '../../../Redux/store';
 export const Sidebar = () => {
     const dispatch = useDispatch()
-    // const initialCateogy = JSON.parse(localStorage.getItem("category"));
-    // const initialProduct = JSON.parse(localStorage.getItem("product"));
-    // const initialTag = JSON.parse(localStorage.getItem("tag"));
-    // const initialBrand = JSON.parse(localStorage.getItem("brand"));
-    // console.log("cat",initialCateogy);
     const [category, setCategory] = useState("")
     const [brand, setBrand] = useState("")
     const [tag, setTag] = useState("")

@@ -49,7 +49,7 @@ function Product() {
 
                     <div>
                         <Stack direction={['column', 'row']} spacing='24px' divider={<StackDivider borderColor='gray.200' />}>
-                              <Sidebar />
+                            <Sidebar />
                             <Box >
                                 <Box
                                     maxW="7xl"
@@ -75,11 +75,13 @@ function Product() {
                         </Stack>
                     </div>
                     <div>
-                        <Center>
-                            <Button onClick={() => setPage(page - 1)}>PREV</Button>
-                            <Button disabled>{page}</Button>
-                            <Button onClick={() => setPage(page + 1)}>NEXT</Button>
-                        </Center>
+                        {  (brand === "" && category === "" && tag === "" && product === "") ? 
+                            <Center>
+                                <Button onClick={() => setPage(page - 1)}>PREV</Button>
+                                <Button disabled>{page}</Button>
+                                <Button onClick={() => setPage(page + 1)}>NEXT</Button>
+                            </Center> : null
+                        }
                     </div >
                 </>
     )
