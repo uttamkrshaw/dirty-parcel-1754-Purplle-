@@ -20,17 +20,15 @@ import { Sidebar } from "../Mini_Components/User_Site/Sidebar/Sidebar";
 function Product() {
 
     const dispatch = useDispatch()
-    const { products, isLoading, isError } = useSelector((store) => store.ProductReducer)
+    const { products, isLoading, isError, brand, category, product, tag } = useSelector((store) => store.ProductReducer)
     const [page, setPage] = useState(1)
-    const [load, setLoad] = useState(false)
 
-    const handleLoad = () => {
-        setLoad(!load)
-    }
 
     useEffect(() => {
-        dispatch(getProductData(page))
-    }, [page])
+        if (brand === "" && category === "" && tag === "" && product === "") {
+            dispatch(getProductData(page))
+        }
+    }, [])
 
     return (
         isLoading ?
@@ -46,12 +44,12 @@ function Product() {
                 :
                 <>
                     <div>
-                        <DefaultNavbar handleLoad={handleLoad} />
+                        <DefaultNavbar />
                     </div>
 
                     <div>
                         <Stack direction={['column', 'row']} spacing='24px' divider={<StackDivider borderColor='gray.200' />}>
-                            <Sidebar handleLoad={handleLoad} />
+                              <Sidebar />
                             <Box >
                                 <Box
                                     maxW="7xl"

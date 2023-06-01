@@ -73,6 +73,7 @@ export const ProductCard = (props) => {
                     top="4"
                     right="4"
                     aria-label={`Add ${name} to your favourites`}
+                    {...props}
                 />
             </Box>
             <Stack>

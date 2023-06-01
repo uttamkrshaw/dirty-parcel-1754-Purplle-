@@ -1,5 +1,9 @@
 import axios from "axios"
 import {
+    CHANGE_BRAND,
+    CHANGE_CATEGORY,
+    CHANGE_PRODUCT,
+    CHANGE_TAG,
     ERROR,
     GET_BRAND,
     GET_CATEGORY,
@@ -43,6 +47,39 @@ export const getTagProducts = (payload) => { // localStorage.setItem("products",
 export const getProductType = (payload) => { // localStorage.setItem("products", JSON.stringify(payload))
     return {type: GET_PRODUCT_TYPE, payload}
 }
+// --------------->>>>>>>>Custom Action Types For Sidebar Reducers<<<<<<<<-------------------
+
+export const changeCategory = (payload) => {
+    localStorage.setItem("category", JSON.stringify(payload))
+    localStorage.removeItem("brand")
+    localStorage.removeItem("tag")
+    localStorage.removeItem("product")
+    return {type: CHANGE_CATEGORY, payload}
+}
+
+export const changeBrand = (payload) => {
+    localStorage.setItem("brand", JSON.stringify(payload))
+    localStorage.removeItem("category")
+    localStorage.removeItem("tag")
+    localStorage.removeItem("product")
+    return {type: CHANGE_BRAND, payload}
+}
+
+export const changeTag = (payload) => {
+    localStorage.setItem("tag", JSON.stringify(payload))
+    localStorage.removeItem("brand")
+    localStorage.removeItem("category")
+    localStorage.removeItem("product")
+    return {type: CHANGE_TAG, payload}
+}
+
+export const changeProduct = (payload) => {
+    localStorage.setItem("product", JSON.stringify(payload))
+    localStorage.removeItem("brand")
+    localStorage.removeItem("tag")
+    localStorage.removeItem("category")
+    return {type: CHANGE_PRODUCT, payload}
+}
 
 // --------------->>>>>>>>Custom Funtions To Get Data <<<<<<<<-------------------
 
@@ -77,7 +114,7 @@ export const getBrandProductData = (payload) => (dispatch) => { // dispatch(load
         'headers': {
             'Authorization': `bearer ${token}`
         }
-    }).then((res) => dispatch(getBrandProducts(res.data))).catch((err) => dispatch(error()))
+    }).then((res) => dispatch(getBrandProducts(res.data)) ).catch((err) => dispatch(error()))
 }
 
 
@@ -101,7 +138,6 @@ export const getProductTypeData = (payload) => (dispatch) => { // dispatch(loadi
         }
     }).then((res) => dispatch(getProductType(res.data))).catch((err) => dispatch(error()))
 }
-
 
 
 export const getSingleProductData = (payload) => (dispatch) => {

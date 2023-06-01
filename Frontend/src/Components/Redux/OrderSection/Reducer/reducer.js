@@ -18,12 +18,15 @@ export const reducer = (state = initialState, {type, payload}) => {
         case ADD_FAV:
             return {
                 ...state,
-                fav: payload
+                fav: [
+                    ...state.fav,
+                    payload
+                ]
             }
         case REMOVE_ITEM:
             return {
                 ...state,
-                cart:payload
+                cart: payload
             }
         case UPDATE_QUANTITY:
             return {

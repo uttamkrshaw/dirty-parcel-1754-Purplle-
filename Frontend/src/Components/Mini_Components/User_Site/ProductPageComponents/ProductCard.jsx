@@ -8,35 +8,35 @@ import {
   Stack,
   Text,
   useBreakpointValue,
-  useColorModeValue,useToast 
+  useColorModeValue, useToast
 } from '@chakra-ui/react'
 import * as React from 'react'
 import { FavouriteButton } from './FavoutiteButton'
 import { Link } from 'react-router-dom'
-import { useDispatch , useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../../Redux/OrderSection/Action/action'
 import { store } from '../../../Redux/store'
 
 export const ProductCard = (props) => {
   const dispatch = useDispatch()
   const toast = useToast()
-  const user = useSelector((store)=>store.UserReducer.user)
+  const user = useSelector((store) => store.UserReducer.user)
   const { product, rootProps } = props
   const { name, brand, image_link, price, category, product_type, _id } = product
   const handleCart = () => {
     const payload = {
-      _id:props.product._id,
-      brand:props.product.brand,
-      category:props.product.category,
-      name:props.product.name,
+      _id: props.product._id,
+      brand: props.product.brand,
+      category: props.product.category,
+      name: props.product.name,
       price: +props.product.price,
-      image_link:props.product.image_link,
-      product_type:props.product.product_type,
-      user:user[0].username,
-      date:new Date().toLocaleString('en-GB', {
+      image_link: props.product.image_link,
+      product_type: props.product.product_type,
+      user: user[0].username,
+      date: new Date().toLocaleString('en-GB', {
         hour12: false,
       }),
-      Quantity:1
+      Quantity: 1
     }
     dispatch(addToCart(payload))
     toast({
@@ -45,7 +45,7 @@ export const ProductCard = (props) => {
       status: 'success',
       duration: 2000,
       isClosable: true,
-  })
+    })
   }
   return (
     <Stack
@@ -73,6 +73,8 @@ export const ProductCard = (props) => {
           top="4"
           right="4"
           aria-label={`Add ${name} to your favourites`}
+          {...props}
+
         />
       </Box>
       <Stack>
@@ -95,7 +97,7 @@ export const ProductCard = (props) => {
         </Stack>
       </Stack>
       <Stack align="center">
-        <Button onClick={()=>{handleCart()}} colorScheme="pink" width="full">
+        <Button onClick={() => { handleCart() }} colorScheme="pink" width="full">
           Add to cart
         </Button>
         <Link

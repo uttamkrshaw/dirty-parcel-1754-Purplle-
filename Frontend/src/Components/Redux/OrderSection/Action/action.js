@@ -1,4 +1,3 @@
-import axios from "axios"
 import {ADD_CART, ADD_FAV, REMOVE_ITEM, UPDATE_QUANTITY} from "../ActionTypes/actionType"
 
 // --------------->>>>>>>> Custom Action Types For Reducers <<<<<<<<-------------------

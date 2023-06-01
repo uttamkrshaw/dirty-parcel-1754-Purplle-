@@ -1,4 +1,8 @@
 import {
+    CHANGE_BRAND,
+    CHANGE_CATEGORY,
+    CHANGE_PRODUCT,
+    CHANGE_TAG,
     ERROR,
     GET_BRAND,
     GET_CATEGORY,
@@ -12,10 +16,12 @@ import {
 const initialState = {
     isLoading: false,
     isError: false,
-    // products: JSON.parse(localStorage.getItem("products")) || [],
-    // singleProduct: JSON.parse(localStorage.getItem("singleProduct")) || []
     products: [],
-    singleProduct: []
+    singleProduct: [],
+    category: "",
+    brand: "",
+    tag: "",
+    product: ""
 }
 
 export const reducer = (state = initialState, {type, payload}) => {
@@ -31,8 +37,8 @@ export const reducer = (state = initialState, {type, payload}) => {
             return {
                 ...state,
                 singleProduct: payload,
-                isLoading:false,
-                isError:false
+                isLoading: false,
+                isError: false
             }
         case GET_CATEGORY:
             return {
@@ -73,6 +79,38 @@ export const reducer = (state = initialState, {type, payload}) => {
                 ...state,
                 isLoading: false,
                 isError: true
+            }
+        case CHANGE_BRAND:
+            return {
+                ...state,
+                brand: payload,
+                product: "",
+                tag: "",
+                category: ""
+            }
+        case CHANGE_CATEGORY:
+            return {
+                ...state,
+                brand: "",
+                product: "",
+                tag: "",
+                category: payload
+            }
+        case CHANGE_TAG:
+            return {
+                ...state,
+                brand: "",
+                product: "",
+                tag: payload,
+                category: ""
+            }
+        case CHANGE_PRODUCT:
+            return {
+                ...state,
+                brand: "",
+                product: payload,
+                tag: "",
+                category: ""
             }
         default:
             return state

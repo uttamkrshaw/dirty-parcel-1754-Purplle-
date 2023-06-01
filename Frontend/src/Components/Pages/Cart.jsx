@@ -13,10 +13,13 @@ import { CartItem } from '../Mini_Components/User_Site/CartPageComponents/CartIt
 import DefaultNavbar from '../Mini_Components/User_Site/Header/Header'
 import DefaultFooter from '../Mini_Components/User_Site/Footer/Footer'
 import { Link } from 'react-router-dom'
+import { store } from '../Redux/store'
 
 export const CartPage = () => {
   const cart = useSelector((store) => store.OrderReducer.cart)
+  const fav = useSelector((store)=>store.OrderReducer.fav)
   localStorage.setItem("cart", JSON.stringify(cart))
+  localStorage.setItem("fav",JSON.stringify(fav))
   return <>
     <DefaultNavbar />
     <Box
