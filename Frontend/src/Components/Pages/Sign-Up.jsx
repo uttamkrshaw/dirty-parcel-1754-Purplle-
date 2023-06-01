@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   useToast,
 } from "@chakra-ui/react";
@@ -19,7 +19,7 @@ import {
   IconProps,
   Icon,
   InputGroup,
-  InputRightElement,
+  InputRightElement, FormControl, FormLabel, FormHelperText, GridItem, Select, InputLeftAddon, Textarea, Progress, ButtonGroup
 } from "@chakra-ui/react";
 // importing router link for navigation
 import { Link as RouterLink, useNavigate } from "react-router-dom";
@@ -48,16 +48,270 @@ const avatars = [
   },
 ];
 
+/// Form 
+
+
+const Form1 = ({ email, setEmail, password, setPassword, username, setUsername, age, setAge }) => {
+  const [show, setShow] = React.useState(false);
+  const handleClick = () => setShow(!show);
+  return (
+    <>
+      <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
+        User Registration
+      </Heading>
+      <Flex>
+        <FormControl mr="5%">
+          <FormLabel htmlFor="user-name" fontWeight={'normal'}>
+            User name
+          </FormLabel>
+          <Input id="user-name" placeholder="User name" value={username} onChange={(e) => { setUsername(e.target.value) }} />
+        </FormControl>
+
+        <FormControl>
+          <FormLabel htmlFor="age" fontWeight={'normal'}>
+            Age
+          </FormLabel>
+          <Input id="age" placeholder="Age" value={age} onChange={(e) => { setAge(e.target.value) }} />
+        </FormControl>
+      </Flex>
+      <FormControl mt="2%">
+        <FormLabel htmlFor="email" fontWeight={'normal'}>
+          Email address
+        </FormLabel>
+        <Input id="email" type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+        <FormHelperText>We'll never share your email.</FormHelperText>
+      </FormControl>
+
+      <FormControl>
+        <FormLabel htmlFor="password" fontWeight={'normal'} mt="2%">
+          Password
+        </FormLabel>
+        <InputGroup size="md">
+          <Input
+            pr="4.5rem"
+            type={show ? 'text' : 'password'}
+            placeholder="Enter password"
+            value={password} onChange={(e) => { setPassword(e.target.value) }}
+          />
+          <InputRightElement width="4.5rem">
+            <Button h="1.75rem" size="sm" onClick={handleClick}>
+              {show ? 'Hide' : 'Show'}
+            </Button>
+          </InputRightElement>
+        </InputGroup>
+      </FormControl>
+    </>
+  );
+};
+
+const Form2 = ({ name, setName, mobile, setMobile, pin, setPin, address, setAddress, district, setDistrict, state, setState, type, setType }) => {
+  return (
+    <>
+      <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
+        User Address Details
+      </Heading>
+      <Flex>
+        <FormControl mr="5%">
+          <FormLabel htmlFor="user-name" fontWeight={'normal'}>
+            Name
+          </FormLabel>
+          <Input id="user-name" placeholder="Name" value={name} onChange={(e) => { setName(e.target.value) }}  />
+        </FormControl>
+
+        <FormControl>
+          <FormLabel htmlFor="age" fontWeight={'normal'}>
+            10-digit Mobile Number
+          </FormLabel>
+          <Input id="age" placeholder="Mobile Number" value={mobile} onChange={(e) => { setMobile(e.target.value) }}
+ />
+        </FormControl>
+      </Flex>
+
+      <FormControl as={GridItem} colSpan={6}>
+        <FormLabel
+          htmlFor="street_address"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: 'gray.50',
+          }}
+          mt="2%">
+          Street address
+        </FormLabel>
+        <Input
+          type="text"
+          name="street_address"
+          id="street_address"
+          placeholder="Street Address"
+          autoComplete="street-address"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+          value={address} onChange={(e) => { setAddress(e.target.value) }}
+        />
+      </FormControl>
+
+      <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
+        <FormLabel
+          htmlFor="city"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: 'gray.50',
+          }}
+          mt="2%">
+          District
+        </FormLabel>
+        <Input
+          type="text"
+          placeholder="District"
+          name="city"
+          id="city"
+          autoComplete="city"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+          value={district} onChange={(e) => { setDistrict(e.target.value) }}
+
+        />
+      </FormControl>
+
+      <FormControl as={GridItem} colSpan={[6, 3, null, 2]}>
+        <FormLabel
+          htmlFor="state"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: 'gray.50',
+          }}
+          mt="2%">
+          Address Type
+        </FormLabel>
+        <Select
+          id="state"
+          name="state"
+          autoComplete="state"
+          placeholder="Select Address Type"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+          value={type} onChange={(e) => { setType(e.target.value) }}
+          >
+          <option value="Home">Home</option>
+          <option value="Work">Work</option>
+        </Select>
+      </FormControl>
+
+      <FormControl as={GridItem} colSpan={[6, 3, null, 2]}>
+        <FormLabel
+          htmlFor="postal_code"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: 'gray.50',
+          }}
+          mt="2%">
+          ZIP / Postal
+        </FormLabel>
+        <Input
+          type="number"
+          name="postal_code"
+          id="postal_code"
+          autoComplete="postal-code"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+          value={pin} onChange={(e) => { setPin(e.target.value) }}
+        />
+      </FormControl>
+      <FormControl as={GridItem} colSpan={[6, 3]}>
+        <FormLabel
+          htmlFor="state"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: 'gray.50',
+          }}>
+          State
+        </FormLabel>
+        <Select
+          id="state"
+          name="state"
+          autoComplete="state"
+          placeholder="Select state"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+          value={state} onChange={(e) => {setState(e.target.value) }}
+          >
+          <option value="">Select State</option>
+          <option value='Andhra Pradesh'>Andhra Pradesh </option>
+          <option value='Arunachal Pradesh'>Arunachal Pradesh</option>
+          <option value='Assam'>Assam</option>
+          <option value='Bihar'>Bihar</option>
+          <option value='Chhattisgarh'>Chhattisgarh</option>
+          <option value='Goa'>Goa</option>
+          <option value='Gujarat'>Gujarat</option>
+          <option value='Haryana'>Haryana</option>
+          <option value='Himachal Pradesh'>Himachal Pradesh</option>
+          <option value='Jammu and Kashmir'>Jammu and Kashmir</option>
+          <option value='Jharkhand'>Jharkhand</option>
+          <option value='Karnataka'>Karnataka</option>
+          <option value='Kerala'>Kerala</option>
+          <option value='Madhya Pradesh'>Madhya Pradesh</option>
+          <option value='Maharashtra'>Maharashtra</option>
+          <option value='Manipur'>Manipur</option>
+          <option value='Meghalaya'>Meghalaya</option>
+          <option value='Mizoram'>Mizoram</option>
+          <option value='Nagaland'>Nagaland</option>
+          <option value='Odisha'>Odisha</option>
+          <option value='Punjab'>Punjab</option>
+          <option value='Rajasthan'>Rajasthan</option>
+          <option value='Tamil Nadu'>Tamil Nadu</option>
+          <option value='Telangana'>Telangana</option>
+          <option value='Tripura'>Tripura</option>
+          <option value='Uttar Pradesh'>Uttar Pradesh</option>
+          <option value='Uttarakhand'>Uttarakhand</option>
+          <option value='West Bengal'>West Bengal</option>
+        </Select>
+      </FormControl>
+    </>
+  );
+};
+
 export default function SignUp() {
 
   const navigate = useNavigate()
-
+  const toast = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
-  const toast = useToast();
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [pin, setPin] = useState("");
+  const [address, setAddress] = useState("");
+  const [district, setDistrict] = useState("");
+  const [state, setState] = useState("");
+  const [type, setType] = useState("")
 
+  const [step, setStep] = useState(1);
+  const [progress, setProgress] = useState(50);
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
   const handleSubmit = () => {
@@ -67,13 +321,13 @@ export default function SignUp() {
       username,
       age,
       location: {
-        Name: "",
-        Mobile_No: 0,
-        Pin_Code: 0,
-        Address: "",
-        District: "",
-        State: "",
-        Address_Type: "Home",
+        Name:name,
+        Mobile_No: mobile,
+        Pin_Code: pin,
+        Address: address,
+        District: district,
+        State: state,
+        Address_Type:type,
       },
       type: "USER",
       order: {
@@ -216,90 +470,73 @@ export default function SignUp() {
             </Text>
           </Stack>
           <Box as={"form"} mt={10}>
-            <Stack spacing={4}>
-              <Input
-                placeholder="Enter Email Id"
-                value={email}
-                bg={"gray.100"}
-                border={0}
-                color={"gray.500"}
-                _placeholder={{
-                  color: "gray.500",
-                }}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
-              <Input
-                placeholder="Enter Username"
-                bg={"gray.100"}
-                border={0}
-                color={"gray.500"}
-                value={username}
-                _placeholder={{
-                  color: "gray.500",
-                }}
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                }}
-              />
-              <InputGroup size="md">
-                <Input
-                  placeholder="Enter Password"
-                  value={password}
-                  bg={"gray.100"}
-                  border={0}
-                  color={"gray.500"}
-                  _placeholder={{
-                    color: "gray.500",
-                  }}
-                  //pr='4.5rem'
-                  type={show ? "text" : "password"}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                />
-                <InputRightElement width="4.5rem">
-                  <Button
-                    h="1.75rem"
-                    size="sm"
-                    bg={"gray.100"}
-                    color={"gray.500"}
-                    onClick={handleClick}
-                  >
-                    {show ? "Hide" : "Show"}
-                  </Button>
-                </InputRightElement>
-              </InputGroup>
-              <Input
-                placeholder="Enter Age"
-                type="Number"
-                bg={"gray.100"}
-                border={0}
-                color={"gray.500"}
-                value={age}
-                _placeholder={{
-                  color: "gray.500",
-                }}
-                onChange={(e) => {
-                  setAge(e.target.value);
-                }}
-              />
-            </Stack>
-            <Button
-              onClick={handleSubmit}
-              fontFamily={"heading"}
-              mt={8}
-              w={"full"}
-              bgGradient="linear(to-r, red.400,pink.400)"
-              color={"white"}
-              _hover={{
-                bgGradient: "linear(to-r, red.400,pink.400)",
-                boxShadow: "xl",
-              }}
-            >
-              Submit
-            </Button>
+            <Box
+              borderWidth="1px"
+              rounded="lg"
+              shadow="1px 1px 3px rgba(0,0,0,0.3)"
+              maxWidth={800}
+              p={6}
+              m="10px auto"
+              as="form">
+              <Progress
+                hasStripe
+                value={progress}
+                mb="5%"
+                mx="5%"
+                isAnimated></Progress>
+              {step === 1 ? <Form1 username={username} setUsername={setUsername} age={age} setAge={setAge} email={email} setEmail={setEmail} password={password} setPassword={setPassword} /> :
+                <Form2 name={name} setName={setName}
+                  mobile={mobile} setMobile={setMobile}
+                  pin={pin} setPin={setPin}
+                  address={address} setAddress={setAddress}
+                  district={district} setDistrict={setDistrict}
+                  state={state} setState={setState}
+                  type={type} setType={setType} />}
+              <ButtonGroup mt="5%" w="100%">
+                <Flex w="100%" justifyContent="space-between">
+                  <Flex>
+                    <Button
+                      onClick={() => {
+                        setStep(step - 1);
+                        setProgress(progress - 50);
+                      }}
+                      isDisabled={step === 1}
+                      colorScheme="teal"
+                      variant="solid"
+                      w="7rem"
+                      mr="5%">
+                      Back
+                    </Button>
+                    <Button
+                      w="7rem"
+                      isDisabled={step === 2}
+                      onClick={() => {
+                        setStep(step + 1);
+                        if (step === 2) {
+                          setProgress(100);
+                        } else {
+                          setProgress(progress + 50);
+                        }
+                      }}
+                      colorScheme="teal"
+                      variant="outline">
+                      Next
+                    </Button>
+                  </Flex>
+                  {step === 2 ? (
+                    <Button
+                      w="7rem"
+                      colorScheme="red"
+                      variant="solid"
+                      onClick={()=>{handleSubmit()}}
+                      >
+                      Submit
+                    </Button>
+                  ) : null}
+                </Flex>
+              </ButtonGroup>
+            </Box>
+
             <RouterLink to="/login">
               <Button
                 fontFamily={"heading"}
@@ -350,3 +587,14 @@ export const Blur = (props: IconProps) => {
     </Icon>
   );
 };
+
+
+// onClick={() => {
+//   toast({
+//     title: 'Account created.',
+//     description: "We've created your account for you.",
+//     status: 'success',
+//     duration: 3000,
+//     isClosable: true,
+//   });
+// }}
