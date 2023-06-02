@@ -7,16 +7,18 @@ export const ProductGrid = (props) => {
     return {
       base: Math.min(2, count),
       md: Math.min(3, count),
-      lg: Math.min(4, count),
-      xl: Math.min(5, count),
+      lg: Math.min(5, count),
+      xl: Math.min(6, count),
     }
   }, [props.children])
   return (
     <SimpleGrid
       columns={columns}
       columnGap={{
-        base: '4',
+        base: '5',
         md: '6',
+        lg:'8',
+        xl:'10'
       }}
       rowGap={{
         base: '8',

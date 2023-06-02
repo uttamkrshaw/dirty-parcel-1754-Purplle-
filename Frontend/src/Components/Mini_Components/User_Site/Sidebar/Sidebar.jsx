@@ -62,10 +62,10 @@ export const Sidebar = () => {
     }, [category, brand, tag, product])
     return (
         <>
-            <Accordion defaultIndex={[0]} allowMultiple>
+            <Accordion defaultIndex={[0]} allowToggle   >
                 <AccordionItem>
                     <h2>
-                        <AccordionButton>
+                        <AccordionButton  _expanded={{ bg: 'pink.500', color: 'white' }}>
                             <Box as="span" flex='1' textAlign='left'>
                                 Category
                             </Box>
@@ -73,7 +73,7 @@ export const Sidebar = () => {
                         </AccordionButton>
                     </h2>
                     <AccordionPanel pb={4}>
-                        <RadioGroup onChange={(e) => { handleCategory(e) }} value={category}>
+                        <RadioGroup onChange={(e) => { handleCategory(e) }} value={category} colorScheme='red'>
                             <Stack direction={'column'}>
                                 <Radio value=''>Choose Product Category</Radio>
                                 <Radio value='liquid'>liquid</Radio>
@@ -94,7 +94,7 @@ export const Sidebar = () => {
 
                 <AccordionItem>
                     <h2>
-                        <AccordionButton>
+                        <AccordionButton _expanded={{ bg: 'pink.500', color: 'white' }}>
                             <Box as="span" flex='1' textAlign='left'>
                                 Product Type
                             </Box>
@@ -102,7 +102,7 @@ export const Sidebar = () => {
                         </AccordionButton>
                     </h2>
                     <AccordionPanel pb={4}>
-                        <RadioGroup onChange={(e) => { handleproduct(e) }} value={product}>
+                        <RadioGroup onChange={(e) => { handleproduct(e) }} value={product} colorScheme='red'>
                             <Stack direction={'column'}>
                                 <Radio value=''>Choose Product Type</Radio>
                                 <Radio value='Blush'>Blush</Radio>
@@ -119,7 +119,7 @@ export const Sidebar = () => {
                 </AccordionItem>
                 <AccordionItem>
                     <h2>
-                        <AccordionButton>
+                        <AccordionButton _expanded={{ bg: 'pink.500', color: 'white' }}>
                             <Box as="span" flex='1' textAlign='left'>
                                 Tags
                             </Box>
@@ -127,7 +127,7 @@ export const Sidebar = () => {
                         </AccordionButton>
                     </h2>
                     <AccordionPanel pb={4}>
-                        <RadioGroup onChange={(e) => { handletag(e) }} value={tag}>
+                        <RadioGroup onChange={(e) => { handletag(e) }} value={tag} colorScheme='red'>
                             <Stack direction={'column'}>
                                 <Radio value=''>Choose Product Tag</Radio>
                                 <Radio value='Canadian'>Canadian</Radio>
@@ -147,7 +147,7 @@ export const Sidebar = () => {
                 </AccordionItem>
                 <AccordionItem>
                     <h2>
-                        <AccordionButton>
+                        <AccordionButton _expanded={{ bg: 'pink.500', color: 'white' }}>
                             <Box as="span" flex='1' textAlign='left'>
                                 Brand
                             </Box>
@@ -155,7 +155,7 @@ export const Sidebar = () => {
                         </AccordionButton>
                     </h2>
                     <AccordionPanel pb={4}>
-                        <RadioGroup onChange={(e) => { handlebrand(e) }} value={brand}>
+                        <RadioGroup onChange={(e) => { handlebrand(e) }} value={brand} colorScheme='red'>
                             <Stack direction={'column'}>
                                 <Radio value=''>Choose Product Brand</Radio>
                                 <Radio value='almay'>almay</Radio>
