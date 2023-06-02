@@ -70,14 +70,11 @@ function Product() {
         </div>
 
         <div>
-            <Stack direction={
-                ['column', 'row']
-            }
+            <Stack direction={['column', 'row']}
                 p={10}
                 divider={
-                    <StackDivider
-                        borderColor='gray.200' />
-                }>
+                    <StackDivider borderColor='gray.200' />
+                } spacing={8}>
                 <Sidebar />
                 <Box margin={'auto'}>
                     <Box maxW="6xl" mx="auto"
