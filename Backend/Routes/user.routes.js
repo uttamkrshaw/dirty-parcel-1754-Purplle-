@@ -93,9 +93,7 @@ userRouter.patch("/update/:_id", auth, async (req, res) => {
         res.status(200).send({"msg":"User Details Updated"})
     } catch (error) {
         res.status(400).send({"msg":error.message})
-
     }
-
 })
 
 // --------------->>>>>>>> User Delete <<<<<<<<-------------------
