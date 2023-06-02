@@ -12,16 +12,24 @@ import {
 import * as React from 'react'
 import { HiOutlineChat, HiOutlineMail, HiOutlinePhone } from 'react-icons/hi'
 import { ProductItem } from './ProductItem'
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { orderPlaced } from '../../../Redux/UserSection/Action/action'
 
 export const OrderSummary = (props) => {
   const { shipping } = props
-  const cart = useSelector((store) => store.OrderReducer.cart)
+  const dispatch = useDispatch()
+  const { cart, fav } = useSelector((store) => store.OrderReducer)
   const [total, setTotal] = React.useState(0)
   const calTotal = () => {
     let sum = 0;
     cart.map((el) => { sum = sum + (el.price * el.Quantity) })
     setTotal(sum)
+  }
+  const handleOrder = () => {
+    const payload = {
+      cart, fav
+    }
+    dispatch(orderPlaced(payload))
   }
   React.useEffect(() => {
     calTotal()
@@ -100,7 +108,7 @@ export const OrderSummary = (props) => {
         </Stack>
       </Stack>
       <Stack spacing="8">
-        <Button colorScheme="pink" size="lg" py="7">
+        <Button onClick={() => { handleOrder() }} colorScheme="pink" size="lg" py="7">
           Place Order
         </Button>
         <Stack spacing="3">
