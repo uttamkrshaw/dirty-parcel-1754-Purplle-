@@ -6,8 +6,10 @@ import { PaymentInformation } from '../Mini_Components/User_Site/CheckoutPageCom
 import { OrderSummary } from '../Mini_Components/User_Site/CheckoutPageComponent/OrderSummary'
 import DefaultNavbar from '../Mini_Components/User_Site/Header/Header'
 import DefaultFooter from '../Mini_Components/User_Site/Footer/Footer'
+import { useState } from 'react'
 
 export const Checkout = () => {
+    const [shipping, setShipping] = useState(10)
     return <>
         <DefaultNavbar />
         <Box
@@ -47,8 +49,8 @@ export const Checkout = () => {
                         }}
                     >
                         <ShippingInformation />
-                        <ShippingMethod />
-                        <PaymentInformation />
+                        <ShippingMethod shipping={shipping} setShipping={setShipping} />
+                        <PaymentInformation  />
                     </Stack>
                 </Box>
                 <Box
@@ -74,7 +76,7 @@ export const Checkout = () => {
                         xl: '20',
                     }}
                 >
-                    <OrderSummary />
+                    <OrderSummary shipping={shipping} setShipping={setShipping} />
                 </Box>
             </Flex>
         </Box>

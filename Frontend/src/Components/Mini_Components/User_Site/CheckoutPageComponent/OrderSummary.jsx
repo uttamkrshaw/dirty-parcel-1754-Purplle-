@@ -14,7 +14,8 @@ import { HiOutlineChat, HiOutlineMail, HiOutlinePhone } from 'react-icons/hi'
 import { ProductItem } from './ProductItem'
 import { useSelector } from "react-redux"
 
-export const OrderSummary = () => {
+export const OrderSummary = (props) => {
+  const { shipping } = props
   const cart = useSelector((store) => store.OrderReducer.cart)
   const [total, setTotal] = React.useState(0)
   const calTotal = () => {
@@ -35,12 +36,6 @@ export const OrderSummary = () => {
       <Heading size="md">Order Summary</Heading>
       <Stack spacing="8">
         <Stack spacing="6">
-          {/* {products.slice(0, 2).map((product) => (
-            <>
-              <ProductItem product={product} />
-              <Divider />
-            </>
-          ))} */}
           {cart.map((product) => (
             <>
               <ProductItem key={product._id} product={product} />
@@ -82,7 +77,7 @@ export const OrderSummary = () => {
             </Stack>
             <Stack direction="row" justify="space-between">
               <Text color={useColorModeValue('gray.600', 'gray.300')}>Shipping cost</Text>
-              <Text color={useColorModeValue('black', 'white')}>+$10</Text>
+              <Text color={useColorModeValue('black', 'white')}>+${shipping}</Text>
             </Stack>
             <Stack direction="row" justify="space-between">
               <Text color={useColorModeValue('gray.600', 'gray.300')}>Discount (10%)</Text>
@@ -99,7 +94,7 @@ export const OrderSummary = () => {
               Order Total
             </Text>
             <Text fontSize="xl" fontWeight="semibold" color={useColorModeValue('black', 'white')}>
-              ${total + 10 - (total * 0.1)}
+              ${total + +shipping - (total * 0.1)}
             </Text>
           </Stack>
         </Stack>

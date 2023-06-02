@@ -10,9 +10,7 @@ import {
 } from '@chakra-ui/react'
 import * as React from 'react'
 
-export const ShippingMethod = () => {
-  const [shipping, setShipping] = React.useState(5)
-  console.log("shipping",shipping)
+export const ShippingMethod = ({shipping,setShipping}) => {
   return <>
     <Stack
       spacing={{
@@ -21,7 +19,7 @@ export const ShippingMethod = () => {
       }}
     >
       <Heading size="md">Shipping Method</Heading>
-      <RadioGroup defaultValue='5' onChange={setShipping} colorScheme="pink" size="lg">
+      <RadioGroup defaultValue='10' onChange={setShipping} colorScheme="pink" size="lg">
         <Stack
           direction={{
             base: 'column',

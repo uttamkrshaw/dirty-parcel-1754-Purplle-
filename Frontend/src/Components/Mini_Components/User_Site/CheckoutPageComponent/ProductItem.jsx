@@ -3,7 +3,6 @@ import * as React from 'react'
 
 export const ProductItem = (props) => {
   const { product } = props
-  console.log("producert",product);
   return (
     <Flex justify="space-between" key={product.id}>
       <Stack direction="row" spacing="5">
