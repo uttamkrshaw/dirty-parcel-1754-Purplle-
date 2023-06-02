@@ -34,8 +34,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import User_details from '../User_details/User_details';
 
-
-
 export default function DefaultNavbar() {
     const { isOpen, onToggle } = useDisclosure();
     let isAuth = useSelector((store) => store.UserReducer.isAuth)

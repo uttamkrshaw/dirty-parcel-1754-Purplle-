@@ -49,7 +49,7 @@ export const ShippingInformation = () => {
           />
         </FormControl>
         <HStack spacing="6">
-          <FormControl id="zip" maxW="32">
+          <FormControl id="zip" maxW="50%">
             <FormLabel color={useColorModeValue('gray.700', 'gray.200')}>Zip Code</FormLabel>
             <Input
               name="zip"
@@ -59,7 +59,7 @@ export const ShippingInformation = () => {
               focusBorderColor={useColorModeValue('blue.500', 'blue.200')}
             />
           </FormControl>
-          <FormControl id="city">
+          <FormControl id="city" maxW='50%'>
             <FormLabel color={useColorModeValue('gray.700', 'gray.200')}>District</FormLabel>
             <Input
               name="district"
@@ -70,8 +70,8 @@ export const ShippingInformation = () => {
             />
           </FormControl>
         </HStack>
-        <HStack spacing="6">
-          <FormControl id="state" maxW="32">
+        <HStack spacing="6" >
+          <FormControl id="state" maxW="50%">
             <FormLabel color={useColorModeValue('gray.700', 'gray.200')}>State</FormLabel>
             <Input
               name="state"
@@ -81,7 +81,7 @@ export const ShippingInformation = () => {
               focusBorderColor={useColorModeValue('blue.500', 'blue.200')}
             />
           </FormControl>
-          <FormControl id="mobile_no">
+          <FormControl id="mobile_no" maxW="50%">
             <FormLabel color={useColorModeValue('gray.700', 'gray.200')}>Mobile No</FormLabel>
             <Input
               name="mobile_no"
@@ -93,12 +93,12 @@ export const ShippingInformation = () => {
           </FormControl>
         </HStack>
         <FormControl id="account">
-            <FormLabel color={useColorModeValue('gray.700', 'gray.200')}>Account Type</FormLabel>
-            <Select isDisabled value={user[0].location.Address_Type}>
-              <option value="Home">Home</option>
-              <option value="Work">Work</option>
-            </Select>
-          </FormControl>
+          <FormLabel color={useColorModeValue('gray.700', 'gray.200')}>Account Type</FormLabel>
+          <Select isDisabled value={user[0].location.Address_Type}>
+            <option value="Home">Home</option>
+            <option value="Work">Work</option>
+          </Select>
+        </FormControl>
         <FormControl id="email">
           <FormLabel color={useColorModeValue('gray.700', 'gray.200')}>Email address</FormLabel>
           <Input
