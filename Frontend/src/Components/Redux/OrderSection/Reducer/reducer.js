@@ -1,8 +1,11 @@
+import {ORDER_PLACED} from "../../UserSection/ActionTypes/actionType"
 import {ADD_CART, REMOVE_ITEM, ADD_FAV, UPDATE_QUANTITY} from "../ActionTypes/actionType"
 
 const initialState = {
     cart: JSON.parse(localStorage.getItem("cart")) || [],
-    fav: JSON.parse(localStorage.getItem("fav")) || []
+    fav: JSON.parse(localStorage.getItem("fav")) || [],
+    userorder: JSON.parse(localStorage.getItem("userorder")) || [],
+    totalorders: JSON.parse(localStorage.getItem("totalorders")) || []
 }
 
 export const reducer = (state = initialState, {type, payload}) => {
@@ -35,6 +38,15 @@ export const reducer = (state = initialState, {type, payload}) => {
                     ...x,
                     Quantity: payload.value
                 } : x)
+            }
+        case ORDER_PLACED:
+            return {
+                ...state,
+                userorder: [
+                    ...state.userorder,
+                    ...payload
+                ],
+                cart: []
             }
         default:
             return state

@@ -1,4 +1,4 @@
-import {USER_DETAILS, USER_TOKEN} from "../ActionTypes/actionType"
+import {PLACE_ORDER, USER_DETAILS, USER_TOKEN, SIGN_OUT} from "../ActionTypes/actionType"
 
 
 const initialState = {
@@ -22,6 +22,23 @@ export const reducer = (state = initialState, {type, payload}) => {
                 ...state,
                 token: payload,
                 isAuth: true
+            }
+        case PLACE_ORDER:
+            return {
+                ...state,
+                user: [
+                    ...state.user.order,
+                    payload
+                ]
+            }
+        case SIGN_OUT:
+            return {
+                ...state,
+                user: [],
+                isAuth: false,
+                token: '',
+                Admin: false
+
             }
         default:
             return state

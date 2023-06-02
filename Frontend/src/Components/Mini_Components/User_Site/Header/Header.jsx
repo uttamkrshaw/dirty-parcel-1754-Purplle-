@@ -31,13 +31,17 @@ import {
 } from '@chakra-ui/icons';
 import { FiChevronDown } from "react-icons/fi"
 import { Link as RouterLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import User_details from '../User_details/User_details';
 
 export default function DefaultNavbar() {
     const { isOpen, onToggle } = useDisclosure();
+    const dispatch = useDispatch()
     let isAuth = useSelector((store) => store.UserReducer.isAuth)
     const user = useSelector((store) => store.UserReducer.user)
+    const handleSignout = () => {
+
+    }
     return (
         <Box>
             <Flex
@@ -118,7 +122,11 @@ export default function DefaultNavbar() {
                                     <MenuDivider />
                                     <MenuItem>Admin Panel</MenuItem>
                                     <MenuDivider />
-                                    <MenuItem>Sign out</MenuItem>
+                                    <MenuItem>
+                                        <Button onClick={handleSignout}>
+                                            Sign out
+                                        </Button>
+                                    </MenuItem>
                                 </MenuList>
                             </Menu>
                         </>
