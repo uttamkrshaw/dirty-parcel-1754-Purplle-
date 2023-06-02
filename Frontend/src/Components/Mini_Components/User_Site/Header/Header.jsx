@@ -21,7 +21,7 @@ import {
     PopoverContent,
     useColorModeValue,
     useBreakpointValue,
-    useDisclosure,
+    useDisclosure,useToast 
 } from '@chakra-ui/react';
 import {
     HamburgerIcon,
@@ -30,17 +30,27 @@ import {
     ChevronRightIcon,
 } from '@chakra-ui/icons';
 import { FiChevronDown } from "react-icons/fi"
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import User_details from '../User_details/User_details';
+import { signout } from '../../../Redux/UserSection/Action/action';
 
 export default function DefaultNavbar() {
     const { isOpen, onToggle } = useDisclosure();
+    const toast = useToast()
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     let isAuth = useSelector((store) => store.UserReducer.isAuth)
     const user = useSelector((store) => store.UserReducer.user)
     const handleSignout = () => {
-
+    dispatch(signout())
+    navigate("/")
+    toast({
+        title: 'Sign Out Successful',
+        status: 'success',
+        duration: 2000,
+        isClosable: true,
+      })
     }
     return (
         <Box>

@@ -16,6 +16,7 @@ export const userToken = (payload) => {
 }
 
 export const signout = () =>{
+    localStorage.clear();
     return {type:SIGN_OUT}
 }
 
