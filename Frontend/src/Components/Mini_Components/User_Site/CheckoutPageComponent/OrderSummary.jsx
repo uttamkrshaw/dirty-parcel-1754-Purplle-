@@ -13,13 +13,15 @@ import * as React from 'react'
 import { HiOutlineChat, HiOutlineMail, HiOutlinePhone } from 'react-icons/hi'
 import { ProductItem } from './ProductItem'
 import { useDispatch, useSelector } from "react-redux"
-import { addUserOrders, updateUserOrderList} from '../../../Redux/UserSection/Action/action'
+import { addUserOrders, updateUserOrderList } from '../../../Redux/UserSection/Action/action'
+import { useNavigate } from 'react-router-dom'
 
 export const OrderSummary = (props) => {
   const { shipping } = props
   const dispatch = useDispatch()
-  const { cart, fav ,userorder } = useSelector((store) => store.OrderReducer)
-  const user = useSelector((store)=>store.UserReducer.user)
+  const navigate = useNavigate()
+  const { cart, fav, userorder } = useSelector((store) => store.OrderReducer)
+  const user = useSelector((store) => store.UserReducer.user)
   const [total, setTotal] = React.useState(0)
   const calTotal = () => {
     let sum = 0;
@@ -28,8 +30,7 @@ export const OrderSummary = (props) => {
   }
   const handleOrder = () => {
     dispatch(addUserOrders([...cart]))
-    dispatch(updateUserOrderList())
-
+    navigate("/products")
   }
   React.useEffect(() => {
     calTotal()

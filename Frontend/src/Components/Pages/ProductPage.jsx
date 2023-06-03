@@ -33,6 +33,7 @@ import { getProductData } from "../Redux/ProductSection/Action/action";
 import { store } from "../Redux/store";
 import { useState, useEffect } from "react";
 import { Sidebar } from "../Mini_Components/User_Site/Sidebar/Sidebar";
+import { updateUserOrderList } from "../Redux/UserSection/Action/action";
 
 function Product() {
 
@@ -46,6 +47,18 @@ function Product() {
         product,
         tag
     } = useSelector((store) => store.ProductReducer)
+
+    const {userorder,fav} = useSelector((store) => store.OrderReducer)
+
+    if (userorder.length > 0) {
+        localStorage.setItem("userorder", JSON.stringify(userorder))
+        localStorage.setItem("fav", JSON.stringify(fav))
+        const payload={
+            userorder,
+            fav
+        }
+        updateUserOrderList(payload)
+    }
 
     const [page, setPage] = useState(1)
 
