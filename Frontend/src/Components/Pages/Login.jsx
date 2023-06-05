@@ -77,7 +77,7 @@ export default function Login() {
         }
         axios({
             method: "post",
-            url: "http://localhost:4500/users/login",
+            url: "https://shy-mittens-mite.cyclic.app/users/login",
             data: payload
         }).then((res) => {
             toast({

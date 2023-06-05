@@ -337,7 +337,7 @@ export default function SignUp() {
     };
     axios({
       method: "post",
-      url: "http://localhost:4500/users/register",
+      url: "https://shy-mittens-mite.cyclic.app/users/register",
       data: payload,
     })
       .then((res) => {

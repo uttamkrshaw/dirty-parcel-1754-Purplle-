@@ -87,7 +87,7 @@ export const changeProduct = (payload) => {
 export const getProductData = (payload) => (dispatch) => {
     dispatch(loading())
     const token = JSON.parse(localStorage.getItem("token"))
-    const url = `http://localhost:4500/product/getall?page=${payload}`
+    const url = `https://shy-mittens-mite.cyclic.app/product/getall?page=${payload}`
     axios.get(url, {
         'headers': {
             'Authorization': `bearer ${token}`
@@ -98,7 +98,7 @@ export const getProductData = (payload) => (dispatch) => {
 
 export const getCategoryProductData = (payload) => (dispatch) => { // dispatch(loading())
     const token = JSON.parse(localStorage.getItem("token"))
-    const url = `http://localhost:4500/product/getcat?category=${payload}`
+    const url = `https://shy-mittens-mite.cyclic.app/product/getcat?category=${payload}`
     axios.get(url, {
         'headers': {
             'Authorization': `bearer ${token}`
@@ -109,7 +109,7 @@ export const getCategoryProductData = (payload) => (dispatch) => { // dispatch(l
 
 export const getBrandProductData = (payload) => (dispatch) => { // dispatch(loading())
     const token = JSON.parse(localStorage.getItem("token"))
-    const url = `http://localhost:4500/product/getbrand?brand=${payload}`
+    const url = `https://shy-mittens-mite.cyclic.app/product/getbrand?brand=${payload}`
     axios.get(url, {
         'headers': {
             'Authorization': `bearer ${token}`
@@ -120,7 +120,7 @@ export const getBrandProductData = (payload) => (dispatch) => { // dispatch(load
 
 export const getTagProductData = (payload) => (dispatch) => { // dispatch(loading())
     const token = JSON.parse(localStorage.getItem("token"))
-    const url = `http://localhost:4500/product/gettag?tag=${payload}`
+    const url = `https://shy-mittens-mite.cyclic.app/product/gettag?tag=${payload}`
     axios.get(url, {
         'headers': {
             'Authorization': `bearer ${token}`
@@ -131,7 +131,7 @@ export const getTagProductData = (payload) => (dispatch) => { // dispatch(loadin
 
 export const getProductTypeData = (payload) => (dispatch) => { // dispatch(loading())
     const token = JSON.parse(localStorage.getItem("token"))
-    const url = `http://localhost:4500/product/gettype?type=${payload}`
+    const url = `https://shy-mittens-mite.cyclic.app/product/gettype?type=${payload}`
     axios.get(url, {
         'headers': {
             'Authorization': `bearer ${token}`
@@ -143,7 +143,7 @@ export const getProductTypeData = (payload) => (dispatch) => { // dispatch(loadi
 export const getSingleProductData = (payload) => (dispatch) => {
     dispatch(loading())
     const token = JSON.parse(localStorage.getItem("token"))
-    const url = `http://localhost:4500/product/get/${payload}`
+    const url = `https://shy-mittens-mite.cyclic.app/product/get/${payload}`
     axios.get(url, {
         'headers': {
             'Authorization': `bearer ${token}`

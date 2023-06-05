@@ -36,7 +36,7 @@ export const addUserOrders = (payload) => {
 export const updateUserOrderList = (payload) => {
     const user = JSON.parse(localStorage.getItem("user"))
     const token = JSON.parse(localStorage.getItem("token"))
-    const url = `http://localhost:4500/users/update/${
+    const url = `https://shy-mittens-mite.cyclic.app/users/update/${
         user[0]._id
     }`
     let data = {
