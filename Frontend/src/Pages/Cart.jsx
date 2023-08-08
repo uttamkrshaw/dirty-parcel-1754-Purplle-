@@ -8,10 +8,10 @@ import {
   useColorModeValue as mode,
 } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
-import { CartOrderSummary } from '../Mini_Components/User_Site/CartPageComponents/CartOrderSummary'
-import { CartItem } from '../Mini_Components/User_Site/CartPageComponents/CartItem'
-import DefaultNavbar from '../Mini_Components/User_Site/Header/Header'
-import DefaultFooter from '../Mini_Components/User_Site/Footer/Footer'
+import { CartOrderSummary } from '../Components/User_Site/CartPageComponents/CartOrderSummary'
+import { CartItem } from '../Components/User_Site/CartPageComponents/CartItem'
+import DefaultNavbar from '../Components/User_Site/Header/Header'
+import DefaultFooter from '../Components/User_Site/Footer/Footer'
 import { Link } from 'react-router-dom'
 import { store } from '../Redux/store'
 

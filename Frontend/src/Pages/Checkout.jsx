@@ -1,11 +1,11 @@
 import { Box, Flex, Stack, useBreakpointValue, useColorModeValue } from '@chakra-ui/react'
 import * as React from 'react'
-import { ShippingInformation } from '../Mini_Components/User_Site/CheckoutPageComponent/ShippingInformation'
-import { ShippingMethod } from '../Mini_Components/User_Site/CheckoutPageComponent/ShippingMethod'
-import { PaymentInformation } from '../Mini_Components/User_Site/CheckoutPageComponent/PaymentInformation'
-import { OrderSummary } from '../Mini_Components/User_Site/CheckoutPageComponent/OrderSummary'
-import DefaultNavbar from '../Mini_Components/User_Site/Header/Header'
-import DefaultFooter from '../Mini_Components/User_Site/Footer/Footer'
+import { ShippingInformation } from '../Components/User_Site/CheckoutPageComponent/ShippingInformation'
+import { ShippingMethod } from '../Components/User_Site/CheckoutPageComponent/ShippingMethod'
+import { PaymentInformation } from '../Components/User_Site/CheckoutPageComponent/PaymentInformation'
+import { OrderSummary } from '../Components/User_Site/CheckoutPageComponent/OrderSummary'
+import DefaultNavbar from '../Components/User_Site/Header/Header'
+import DefaultFooter from '../Components/User_Site/Footer/Footer'
 import { useState } from 'react'
 
 export const Checkout = () => {

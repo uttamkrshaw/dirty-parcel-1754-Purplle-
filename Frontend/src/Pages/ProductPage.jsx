@@ -24,15 +24,15 @@ import {
     StackDivider
 } from '@chakra-ui/react'
 import axios from 'axios';
-import DefaultNavbar from "../Mini_Components/User_Site/Header/Header"
-import DefaultFooter from "../Mini_Components/User_Site/Footer/Footer";
-import { ProductCard } from "../Mini_Components/User_Site/ProductPageComponents/ProductCard";
-import { ProductGrid } from "../Mini_Components/User_Site/ProductPageComponents/ProductGrid";
+import DefaultNavbar from "../Components/User_Site/Header/Header"
+import DefaultFooter from "../Components/User_Site/Footer/Footer";
+import { ProductCard } from "../Components/User_Site/ProductPageComponents/ProductCard";
+import { ProductGrid } from "../Components/User_Site/ProductPageComponents/ProductGrid";
 import { useDispatch, useSelector } from "react-redux"
 import { getProductData } from "../Redux/ProductSection/Action/action";
 import { store } from "../Redux/store";
 import { useState, useEffect } from "react";
-import { Sidebar } from "../Mini_Components/User_Site/Sidebar/Sidebar";
+import { Sidebar } from "../Components/User_Site/Sidebar/Sidebar";
 import { updateUserOrderList } from "../Redux/UserSection/Action/action";
 
 function Product() {

@@ -1,4 +1,4 @@
-import AllRouters from "./Components/Router/AllRoutes";
+import AllRouters from "./Router/AllRoutes";
 function App() {
   return (
     <div className="App">
