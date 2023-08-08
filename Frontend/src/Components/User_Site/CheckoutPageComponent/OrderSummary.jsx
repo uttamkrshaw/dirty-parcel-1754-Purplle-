@@ -90,7 +90,7 @@ export const OrderSummary = (props) => {
             </Stack>
             <Stack direction="row" justify="space-between">
               <Text color={useColorModeValue('gray.600', 'gray.300')}>Discount (10%)</Text>
-              <Text color={useColorModeValue('blue.500', 'blue.200')}>-${(total * 0.1)}</Text>
+              <Text color={useColorModeValue('blue.500', 'blue.200')}>-${Math.round(total * 0.1)}</Text>
             </Stack>
           </Stack>
           <Divider />
