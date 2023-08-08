@@ -19,7 +19,7 @@ import {
   IconProps,
   Icon,
   InputGroup,
-  InputRightElement, FormControl, FormLabel, FormHelperText, GridItem, Select, InputLeftAddon, Textarea, Progress, ButtonGroup
+  InputRightElement, FormControl, FormLabel, FormHelperText, GridItem, Select, Progress, ButtonGroup
 } from "@chakra-ui/react";
 // importing router link for navigation
 import { Link as RouterLink, useNavigate } from "react-router-dom";

@@ -55,17 +55,6 @@ function User_details() {
                                 <Text fontWeight={600} color={'gray.500'} mb={4}>
                                     {user[0].email}
                                 </Text>
-                                {/* <Text
-                                    textAlign={'center'}
-                                    color={useColorModeValue('gray.700', 'gray.400')}
-                                    px={3}>
-                                    Actress, musician, songwriter and artist. PM for work inquires or{' '}
-                                    <Link href={'#'} color={'blue.400'}>
-                                        #tag
-                                    </Link>{' '}
-                                    me in your posts
-                                </Text> */}
-
                                 <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
                                     <Badge
                                         px={2}

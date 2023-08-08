@@ -1,6 +1,5 @@
 import {
     Box,
-    chakra,
     Container,
     Stack,
     Text,
@@ -11,15 +10,11 @@ import {
     Heading,
     SimpleGrid,
     StackDivider,
-    useColorModeValue,
-    VisuallyHidden,
     List,
     ListItem, SkeletonCircle, SkeletonText, Alert, AlertIcon, useToast
 } from '@chakra-ui/react';
-import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { MdLocalShipping } from 'react-icons/md';
 import { useEffect } from "react";
-import { useState } from "react";
 import { useParams } from "react-router-dom";
 import DefaultNavbar from '../Components/User_Site/Header/Header';
 import DefaultFooter from '../Components/User_Site/Footer/Footer';
