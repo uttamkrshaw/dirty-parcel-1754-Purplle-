@@ -9,7 +9,6 @@ const {connection} = require("./db")
 const {userRouter} = require("./Routes/user.routes");
 const {productRouter} = require('./Routes/product.routes');
 const {orderRouter} = require("./Routes/order.routes");
-const { razorPayRoute } = require('./Routes/razorpay.route');
 
 
 // --------------->>>>>>>> Middlewares <<<<<<<<-------------------
@@ -20,7 +19,6 @@ app.use(express.json());
 app.use("/users", userRouter)
 app.use("/product", productRouter)
 app.use("/orders", orderRouter)
-app.use("/api",razorPayRoute)
 
 // --------------->>>>>>>> Default EndPoint <<<<<<<<-------------------
 app.get("/", (req, res) => res.send(`<h1 style="text-align:center; color:purple">Welcome To Bloom Beauty Backend</h1>`))
