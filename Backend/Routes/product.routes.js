@@ -145,14 +145,3 @@ productRouter.delete("/delete/:_id", admin, async (req, res) => {
 module.exports = {
     productRouter
 }
-
-
-// movieRouter.get("/movieTitle", async (req, res)=>{
-//     try {
-//      const query = req.query.q
-//      let movies = await movieModel.find({Title: {$regex:`(?i)${query}`}})
-//      res.send(movies)
-//     } catch (error) {
-//      console.log("Error: " + error)
-//     }
-// })
