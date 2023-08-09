@@ -53,7 +53,10 @@ const avatars = [
 
 const Form1 = ({ email, setEmail, password, setPassword, username, setUsername, age, setAge }) => {
   const [show, setShow] = React.useState(false);
+  const [testing, setTesting] = React.useState(false);
+
   const handleClick = () => setShow(!show);
+  
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
