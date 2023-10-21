@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express()
 
 // --------------->>>>>>>> Imports <<<<<<<<-------------------
-const {connection} = require("./db")
+const {connection} = require("./Connection/connection")
 const {userRouter} = require("./Routes/user.routes");
 const {productRouter} = require('./Routes/product.routes');
 const {orderRouter} = require("./Routes/order.routes");
