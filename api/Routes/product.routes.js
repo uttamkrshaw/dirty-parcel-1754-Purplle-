@@ -4,7 +4,7 @@ const {ProductModel} = require("../Model/product.model")
 const {auth} = require("../Middleware/auth.middleware")
 const {admin} = require("../Middleware/admin.middleware")
 
-//
+
 // --------------->>>>>>>> Get All Product List <<<<<<<<-------------------
 
 productRouter.get("/getall", auth, async (req, res) => {
